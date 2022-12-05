@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@rodrigogs/mysql-events": "^0.6.0"
+  }
+}
