@@ -7,47 +7,29 @@ import '../style/bootstrap/jumbotron-narrow-monitoring.css';
 import {Howl, Howler} from 'howler';
 import useSound from 'use-sound';
 
-import satu from '../assets/audio/new/1.MP3';
-import dua from '../assets/audio/new/2.MP3';
-import tiga from '../assets/audio/new/3.MP3';
-import empat from '../assets/audio/new/4.MP3';
-import lima from '../assets/audio/new/5.MP3';
-import enam from '../assets/audio/new/6.MP3';
-import tujuh from '../assets/audio/new/7.MP3';
-import delapan from '../assets/audio/new/8.MP3';
-import sembilan from '../assets/audio/new/9.MP3';
-// import puluh from ' ../assets/audio/new/puluh.MP3';
-import ratus from '../assets/audio/new/ratus.MP3';
-import ribu from '../assets/audio/new/ribu.MP3';
-import sebelas from '../assets/audio/new/sebelas.MP3';
-import sepuluh from '../assets/audio/new/sepuluh.MP3';
-import seratus from '../assets/audio/new/seratus.MP3';
-import silahkan from '../assets/audio/new/silahkan_ke_perawat.MP3';
+import satuSound from '../assets/audio/new/1.MP3';
+import duaSound from '../assets/audio/new/2.MP3';
+import tigaSound from '../assets/audio/new/3.MP3';
+import empatSound from '../assets/audio/new/4.MP3';
+import limaSound from '../assets/audio/new/5.MP3';
+import enamSound from '../assets/audio/new/6.MP3';
+import tujuhSound from '../assets/audio/new/7.MP3';
+import delapanSound from '../assets/audio/new/8.MP3';
+import sembilanSound from '../assets/audio/new/9.MP3';
+import ratusSound from '../assets/audio/new/ratus.MP3';
+import ribuSound from '../assets/audio/new/ribu.MP3';
+import sebelasSound from '../assets/audio/new/sebelas.MP3';
+import sepuluhSound from '../assets/audio/new/sepuluh.MP3';
+import seratusSound from '../assets/audio/new/seratus.MP3';
+import silahkanSound from '../assets/audio/new/silahkan_ke_perawat.MP3';
+import belasSound from '../assets/audio/new/belas.MP3';
+import puluhSound from '../assets/audio/new/puluh.MP3';
 
 const socket = io.connect("http://localhost:3001/", {
     query: {
         nama: "antrian"
     }
 });
-
-const audoClips = [
-    {sound: satu, label: 'satu'},
-    {sound: dua, label: 'dua'},
-    {sound: tiga, label: 'tiga'},
-    {sound: empat, label: 'empat'},
-    {sound: lima, label: 'lima'},
-    {sound: enam, label: 'enam'},
-    {sound: tujuh, label: 'tujuh'},
-    {sound: delapan, label: 'delapan'},
-    {sound: sembilan, label: 'sembilan'},
-    // {sound: puluh, label: 'puluh'},
-    {sound: ratus, label: 'ratus'},
-    {sound: ribu, label: 'ribu'},
-    {sound: sebelas, label: 'sebelas'},
-    {sound: sepuluh, label: 'sepuluh'},
-    {sound: seratus, label: 'seratus'},
-    {sound: silahkan, label: 'silahkan'},
-]
 
 const reducer = (state, action) => {
     switch (action.type) {
@@ -93,20 +75,21 @@ function Antrian() {
     var [day, setDay] = useState();
     var [time, setTime] = useState();
 
-    const [satu] = useSound('../assets/audio/new/1.MP3');
-    const [dua] = useSound('../assets/audio/new/2.MP3');
-    const [tiga] = useSound('../assets/audio/new/3.MP3');
-    const [empat] = useSound('../assets/audio/new/4.MP3');
-    const [lima] = useSound('../assets/audio/new/5.MP3');
-    const [enam] = useSound('../assets/audio/new/6.MP3');
-    const [tujuh] = useSound('../assets/audio/new/7.MP3');
-    const [delapan] = useSound('../assets/audio/new/8.MP3');
-    const [sembilan] = useSound('../assets/audio/new/9.MP3');
-    const [sepuluh] = useSound('../assets/audio/new/sepuluh.MP3');
-    // const [sebelas] = useSound(sebelas);
-    const [belas] = useSound('../assets/audio/new/belas.MP3');
-    
-    const [puluh] = useSound('../assets/audio/new/puluh.MP3');
+    const sekarang = () => {
+        var puluh = document.getElementsByName("puluh");
+        var dua = document.getElementsByName("dua");
+        var satu = document.getElementsByName("satu");
+
+        dua[0].click();
+        setTimeout(() => {
+            // puluh[0].click();
+            console.log("first");
+            setTimeout(() => {
+                console.log("second");
+            }, 5000);
+        }, 3000);
+
+    }
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -126,66 +109,154 @@ function Antrian() {
             // fetchCurrAntrianPerawat().then((data) => {
             //     if(data.id > dat)
             // perawat.apply(this, audoClips);
+            var perawat = document.getElementsByName("perawat");
+            var satu = document.getElementsByName("satu");
+            var dua = document.getElementsByName("dua");
+            var tiga = document.getElementsByName("tiga");
+            var empat = document.getElementsByName("empat");
+            var lima = document.getElementsByName("lima");
+            var enam = document.getElementsByName("enam");
+            var tujuh = document.getElementsByName("tujuh");
+            var delapan = document.getElementsByName("delapan");
+            var sembilan = document.getElementsByName("sembilan");
+            var puluh = document.getElementsByName("puluh");
+            var ratus = document.getElementsByName("ratus");
+            var ribu = document.getElementsByName("ribu");
+            var sebelas = document.getElementsByName("sebelas");
+            var sepuluh = document.getElementsByName("sepuluh");
+            var seratus = document.getElementsByName("seratus");
+            var belas = document.getElementsByName("belas");
+            // satu[0].click();
+            function beginning(){
+                // silahkan[0].play();
+                setTimeout(() => {
+                    perawat[0].play();
+                }, 500);
+            }
+            // perawat[0].click();
+            // x.items().next().value[1].click();
+            // x.keys().next().value[1].click();
+            // x.values().next().value[1].click();
+            // console.log(x);
             if (IdChecker.current !== IdAntrian.current) {
                 // IdChecker = dataAntrian.id;
+                beginning();
                 IdChecker.current = dataAntrian.id;
-                
-                // usePlaySound(dataAntrian.id);
-                if(IdAntrian.current === 1){
-                    satu();
-                }else if(IdAntrian.current === 2){
-                    dua();
-                }else if(IdAntrian.current === 3){
-                    tiga();
-                }else if(IdAntrian.current === 4){
-                    empat();
-                }else if(IdAntrian.current === 5){
-                    lima();
-                }else if(IdAntrian.current === 6){
-                    enam();
-                }else if(IdAntrian.current === 7){
-                    tujuh();
-                }else if(IdAntrian.current === 8){
-                    delapan();
-                }else if(IdAntrian.current === 9){
-                    sembilan();
-                }else if(IdAntrian.current === 10){
-                    sepuluh();
-                }else if(IdAntrian.current === 11){
-                    sebelas();
-                }else if(IdAntrian.current === 12){
-                    dua();
-                    belas();
-                }else if(IdAntrian.current === 13){
-                    tiga();
-                    belas();
-                }else if(IdAntrian.current === 14){
-                    empat();
-                    belas();
-                }else if(IdAntrian.current === 15){
-                    lima();
-                    belas();
-                }else if(IdAntrian.current === 16){
-                    enam();
-                    belas();
-                }else if(IdAntrian.current === 17){
-                    tujuh();
-                    belas();
-                }else if(IdAntrian.current === 18){
-                    delapan();
-                    belas();
-                }else if(IdAntrian.current === 19){
-                    sembilan();
-                    belas();
-                }else if(IdAntrian.current === 20){
-                    dua();
-                    puluh();
-                }else if(IdAntrian.current === 21){
-                    dua();
-                    puluh();
-                    satu();
+                if (IdAntrian.current !== 0){
+                        switch(IdAntrian.current){
+                            case 1:
+                                satu[0].click();
+                                break;
+                            case 2:
+                                dua[0].click();
+                                break;
+                            case 3:
+                                tiga[0].click();
+                                break;
+                            case 4:
+                                empat[0].click();
+                                break;
+                            case 5:
+                                lima[0].click();
+                                break;
+                            case 6:
+                                enam[0].click();
+                                break;
+                            case 7:
+                                tujuh[0].click();
+                                break;
+                            case 8:
+                                delapan[0].click();
+                                break;
+                            case 9:
+                                sembilan[0].click();
+                                break;
+                            case 10:
+                                sepuluh[0].click();
+                                break;
+                            case 11:
+                                sebelas[0].click();
+                                break;
+                            case 12:
+                                dua[0].click();
+                                belas[0].click();
+                                break;
+                            case 13:
+                                tiga[0].click();
+                                belas[0].click();
+                                break;
+                            case 14:
+                                empat[0].click().then(() => {
+                                    belas[0].click();
+                                });
+                                break;
+                            case 15:
+                                lima[0].click();
+                                belas[0].click();
+                                break;
+                            case 16:
+                                enam[0].click();
+                                setTimeout(() => {
+                                    belas[0].click();
+                                }, 1000);
+                                break;
+                            case 17:
+                                tujuh[0].click();
+                                setTimeout(() => {
+                                    belas[0].click();
+                                }, 3000);
+                                break;
+                            case 18:
+                                delapan[0].click();
+                                setTimeout(() => {
+                                    belas[0].click();
+                                }, 3000);
+                                break;
+                            case 19:
+                                sembilan[0].click();
+                                belas[0].click();
+                                break;
+                            case 20:
+                                dua[0].click();
+                                setTimeout(() => {
+                                    puluh[0].click();
+                                }, 2000);
+                                break;
+                            case 21:
+                                dua[0].click();
+                                setTimeout(() => {
+                                    puluh[0].click();
+                                }, 2000);
+                                setTimeout(() => {
+                                    satu[0].click();
+                                }, 1800);
+                                break;
+                            case 22:
+                                dua[0].click();
+                                puluh[0].click();
+                                dua[0].click();
+                                break;
+                            case 23:
+                                dua[0].click();
+                                puluh[0].click();
+                                tiga[0].click();
+                                break;
+                            case 24:
+                                dua[0].click();
+                                puluh[0].click();
+                                empat[0].click();
+                                break;
+                            case 25:
+                                dua[0].click();
+                                puluh[0].click();
+                                lima[0].click();
+                                break;
+                            default:
+                                break;
+                        
+                        
+                    }
                 }
-                // alert("Antrian baru telah dipanggil");
             }
         }, 1000);
         return () => clearInterval(interval);
@@ -314,16 +385,63 @@ function Antrian() {
     }, []);
 
     const PerawatPlay = () => {
-        const [play] = useSound(silahkan);
-        const [perawat] = useSound(silahkan);
-        return <button onClick={perawat}>Perawat</button>
+        // const [play] = useSound(silahkan);
+        const [perawat] = useSound(silahkanSound);
+        const [satu] = useSound(satuSound);
+        const [dua] = useSound(duaSound);
+        const [tiga] = useSound(tigaSound);
+        const [empat] = useSound(empatSound);
+        const [lima] = useSound(limaSound);
+        const [enam] = useSound(enamSound);
+        const [tujuh] = useSound(tujuhSound);
+        const [delapan] = useSound(delapanSound);
+        const [sembilan] = useSound(sembilanSound);
+        const [sepuluh] = useSound(sepuluhSound);
+        const [sebelas] = useSound(sebelasSound);
+        const [belas] = useSound(belasSound);
+        const [puluh] = useSound(puluhSound);
+        const [ratus] = useSound(ratusSound);
+        const [seratus] = useSound(seratusSound);
+
+        return (
+            <div className="audioPanggilan">
+                <button id="sekarang" name="sekarang" className="buttonhidden" onClick={sekarang}>Sekarang</button>
+                <button id="perawat" name="perawat" className="buttonhidden" onClick={perawat}>Perawat</button>
+                <button id="satu" name="satu" className="buttonhidden" onClick={satu}>satu</button>
+                <button id="dua" name="dua" className="buttonhidden" onClick={dua}>dua</button>
+                <button id="tiga" name="tiga" className="buttonhidden" onClick={tiga}>tiga</button>
+                <button id="empat" name="empat" className="buttonhidden" onClick={empat}>empat</button>
+                <button id="lima" name="lima" className="buttonhidden" onClick={lima}>lima</button>
+                <button id="enam" name="enam" className="buttonhidden" onClick={enam}>enam</button>
+                <button id="tujuh" name="tujuh" className="buttonhidden" onClick={tujuh}>tujuh</button>
+                <button id="delapan" name="delapan" className="buttonhidden" onClick={delapan}>delapan</button>
+                <button id="sembilan" name="sembilan" className="buttonhidden" onClick={sembilan}>sembilan</button>
+                <button id="sepuluh" name="sepuluh" className="buttonhidden" onClick={sepuluh}>sepuluh</button>
+                <button id="sebelas" name="sebelas" className="buttonhidden" onClick={sebelas}>sebelas</button>
+                <button id="puluh" name="puluh" className="buttonhidden" onClick={puluh}>puluh</button>
+                <button id="belas" name="belas" className="buttonhidden" onClick={belas}>belas</button>
+                <button id="seratus" name="seratus" className="buttonhidden" onClick={seratus}>seratus</button>
+                <button id="ratus" name="ratus" className="buttonhidden" onClick={ratus}>ratus</button>
+            </div>   
+        )
     }
 
-    // });
+    // const inputElement = useRef()
+
+    // const playAntrian = (id) => {
+    //     perawat({volume: 10});
+        
+    //     return(
+    //     <div className="audioPanggilan">
+    //         {/* <button id="satu" name="satu" onClick={satu} ref={inputElement}></button> */}
+    //     </div>    
+    //     )
+    // }
 
     return (
         <div className="content">
             {PerawatPlay()}
+            {/* {playAntrian()} */}
             <center>
                 <div className='row'>
                     <div className="brand-logo"></div>
@@ -409,7 +527,7 @@ function Antrian() {
 			<audio id="suarabelloket9" src="<?= base_url(); ?>/assets/audio/new/9.MP3"></audio>
 			<audio id="suarabelloket10" src="<?= base_url(); ?>/assets/audio/new/sepuluh.MP3"></audio>
 			{/* <audio id="loket" src="<?= base_url(); ?>/assets/audio/new/loket.MP3"></audio> --> */}
-			<audio id="perawat" src="../assets/audio/new/silahkan_ke_perawat.MP3"></audio>
+			{/* <audio id="perawat" onClick={playPerawat} onCanPlay={ () => { document.getElementById('perawat').play(); } } src="../assets/audio/new/perawat.MP3"></audio> */}
 		</div>
             <div className="footer">
             <marquee behaviour="alternate"><p>RS Awal Bros Pekanbaru - Semoga Lekas Sembuh</p></marquee>
