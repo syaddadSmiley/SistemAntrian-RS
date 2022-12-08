@@ -24,6 +24,9 @@ import seratusSound from '../assets/audio/new/seratus.MP3';
 import silahkanSound from '../assets/audio/new/silahkan_ke_perawat.MP3';
 import belasSound from '../assets/audio/new/belas.MP3';
 import puluhSound from '../assets/audio/new/puluh.MP3';
+import bellFirstSound from '../assets/audio/new/Airport_Bell_First.mp3';
+import bellSecondSound from '../assets/audio/new/Airport_Bell_Second.mp3';
+import nomorUrutSound from '../assets/audio/new/nomor-urut.MP3';
 
 const socket = io.connect("http://localhost:3001/", {
     query: {
@@ -74,6 +77,25 @@ function Antrian() {
 
     var [day, setDay] = useState();
     var [time, setTime] = useState();
+    const [perawat] = useSound(silahkanSound);
+    const [satu] = useSound(satuSound);
+    const [dua] = useSound(duaSound);
+    const [tiga] = useSound(tigaSound);
+    const [empat] = useSound(empatSound);
+    const [lima] = useSound(limaSound);
+    const [enam] = useSound(enamSound);
+    const [tujuh] = useSound(tujuhSound);
+    const [delapan] = useSound(delapanSound);
+    const [sembilan] = useSound(sembilanSound);
+    const [sepuluh] = useSound(sepuluhSound);
+    const [sebelas] = useSound(sebelasSound);
+    const [belas] = useSound(belasSound);
+    const [puluh] = useSound(puluhSound);
+    const [ratus] = useSound(ratusSound);
+    const [seratus] = useSound(seratusSound);
+    const [bellFirst] = useSound(bellFirstSound);
+    const [bellSecond] = useSound(bellSecondSound);
+    const [nomorUrut] = useSound(nomorUrutSound);
 
     const sekarang = () => {
         var puluh = document.getElementsByName("puluh");
@@ -87,7 +109,7 @@ function Antrian() {
             setTimeout(() => {
                 console.log("second");
             }, 5000);
-        }, 3000);
+        }, 4500);
 
     }
 
@@ -126,13 +148,111 @@ function Antrian() {
             var sepuluh = document.getElementsByName("sepuluh");
             var seratus = document.getElementsByName("seratus");
             var belas = document.getElementsByName("belas");
+            var bellFirst = document.getElementsByName("bellFirst");
+            var bellSecond = document.getElementsByName("bellSecond");
+            var nomorUrut = document.getElementsByName("nomorUrut");
             // satu[0].click();
             function beginning(){
                 // silahkan[0].play();
+                bellFirst[0].click();
                 setTimeout(() => {
-                    perawat[0].play();
-                }, 500);
+                    nomorUrut[0].click();
+                }, 3250);
             }
+            function theEnd(){
+                // silahkan[0].play();
+                setTimeout(() => {
+                    perawat[0].click();
+                    setTimeout(() => {
+                        bellSecond[0].click();
+                    }, 2000);
+                }, 5500);
+            }
+            function theEnd2(){
+                // silahkan[0].play();
+                setTimeout(() => {
+                    perawat[0].click();
+                    setTimeout(() => {
+                        bellSecond[0].click();
+                    }, 2000);
+                }, 6500);
+            }
+            function theEnd3(){
+                // silahkan[0].play();
+                setTimeout(() => {
+                    perawat[0].click();
+                    setTimeout(() => {
+                        bellSecond[0].click();
+                    }, 2000);
+                }, 7500);
+            }
+
+            function duaPuluh(){
+                setTimeout(() => {
+                    dua[0].click();
+                    setTimeout(() => {
+                        puluh[0].click();
+                    }, 1000);
+                }, 4500);
+            }
+            function tigaPuluh(){
+                setTimeout(() => {
+                    tiga[0].click();
+                    setTimeout(() => {
+                        puluh[0].click();
+                    }, 1000);
+                }, 4500);
+            }
+            function empatPuluh(){
+                setTimeout(() => {
+                    empat[0].click();
+                    setTimeout(() => {
+                        puluh[0].click();
+                    }, 1000);
+                }, 4500);
+            }   
+            function limaPuluh(){
+                setTimeout(() => {
+                    lima[0].click();
+                    setTimeout(() => {
+                        puluh[0].click();
+                    }, 1000);
+                }, 4500);
+            }
+            function enamPuluh(){
+                setTimeout(() => {
+                    enam[0].click();
+                    setTimeout(() => {
+                        puluh[0].click();
+                    }, 1000);
+                }, 4500);
+            }
+            function tujuhPuluh(){
+                setTimeout(() => {
+                    tujuh[0].click();
+                    setTimeout(() => {
+                        puluh[0].click();
+                    }, 1000);
+                }, 4500);
+            }
+            function delapanPuluh(){
+                setTimeout(() => {
+                    delapan[0].click();
+                    setTimeout(() => {
+                        puluh[0].click();
+                    }, 1000);
+                }, 4500);
+            }
+            function sembilanPuluh(){
+                setTimeout(() => {
+                    sembilan[0].click();
+                    setTimeout(() => {
+                        puluh[0].click();
+                    }, 1000);
+                }, 4500);
+            }
+
+
             // perawat[0].click();
             // x.items().next().value[1].click();
             // x.keys().next().value[1].click();
@@ -145,116 +265,597 @@ function Antrian() {
                 if (IdAntrian.current !== 0){
                         switch(IdAntrian.current){
                             case 1:
-                                satu[0].click();
-                                break;
-                            case 2:
-                                dua[0].click();
-                                break;
-                            case 3:
-                                tiga[0].click();
-                                break;
-                            case 4:
-                                empat[0].click();
-                                break;
-                            case 5:
-                                lima[0].click();
-                                break;
-                            case 6:
-                                enam[0].click();
-                                break;
-                            case 7:
-                                tujuh[0].click();
-                                break;
-                            case 8:
-                                delapan[0].click();
-                                break;
-                            case 9:
-                                sembilan[0].click();
-                                break;
-                            case 10:
-                                sepuluh[0].click();
-                                break;
-                            case 11:
-                                sebelas[0].click();
-                                break;
-                            case 12:
-                                dua[0].click();
-                                belas[0].click();
-                                break;
-                            case 13:
-                                tiga[0].click();
-                                belas[0].click();
-                                break;
-                            case 14:
-                                empat[0].click().then(() => {
-                                    belas[0].click();
-                                });
-                                break;
-                            case 15:
-                                lima[0].click();
-                                belas[0].click();
-                                break;
-                            case 16:
-                                enam[0].click();
-                                setTimeout(() => {
-                                    belas[0].click();
-                                }, 1000);
-                                break;
-                            case 17:
-                                tujuh[0].click();
-                                setTimeout(() => {
-                                    belas[0].click();
-                                }, 3000);
-                                break;
-                            case 18:
-                                delapan[0].click();
-                                setTimeout(() => {
-                                    belas[0].click();
-                                }, 3000);
-                                break;
-                            case 19:
-                                sembilan[0].click();
-                                belas[0].click();
-                                break;
-                            case 20:
-                                dua[0].click();
-                                setTimeout(() => {
-                                    puluh[0].click();
-                                }, 2000);
-                                break;
-                            case 21:
-                                dua[0].click();
-                                setTimeout(() => {
-                                    puluh[0].click();
-                                }, 2000);
                                 setTimeout(() => {
                                     satu[0].click();
-                                }, 1800);
+                                }, 4500);
+                                break;
+                            case 2:
+                                setTimeout(() => {
+                                dua[0].click();
+                                }, 4500);
+                                break;
+                            case 3:
+                                setTimeout(() => {
+                                tiga[0].click();
+                                }, 4500);
+                                break;
+                            case 4:
+                                setTimeout(() => {
+                                empat[0].click();
+                                }, 4500);
+                                break;
+                            case 5:
+                                setTimeout(() => {
+                                lima[0].click();
+                                }, 4500);
+                                break;
+                            case 6:
+                                setTimeout(() => {
+                                enam[0].click();
+                                }, 4500);
+                                break;
+                            case 7:
+                                setTimeout(() => {
+                                tujuh[0].click();
+                                }, 4500);
+                                break;
+                            case 8:
+                                setTimeout(() => {
+                                delapan[0].click();
+                                }, 4500);
+                                break;
+                            case 9:
+                                setTimeout(() => {
+                                sembilan[0].click();
+                                }, 4500);
+                                break;
+                            case 10:
+                                setTimeout(() => {
+                                sepuluh[0].click();
+                                }, 4500);
+                                break;
+                            case 11:
+                                setTimeout(() => {
+                                sebelas[0].click();
+                                }, 4500);
+                                break;
+                            case 12:
+                                setTimeout(() => {
+                                    dua[0].click();
+                                    setTimeout(() => {
+                                        belas[0].click();
+                                    }, 1000);
+                                }, 4500);
+                                break;
+                            case 13:
+                                setTimeout(() => {
+                                    tiga[0].click();
+                                    setTimeout(() => {
+                                        belas[0].click();
+                                    }, 1000);
+                                }, 4500);
+                                break;
+                            case 14:
+                                setTimeout(() => {
+                                    empat[0].click();
+                                    setTimeout(() => {
+                                        belas[0].click();
+                                    }, 1000);
+                                }, 4500);
+                                break;
+                            case 15:
+                                setTimeout(() => {
+                                    lima[0].click();
+                                    setTimeout(() => {
+                                        belas[0].click();
+                                    }, 1000);
+                                }, 4500);
+                                break;
+                            case 16:
+                                setTimeout(() => {
+                                    enam[0].click();
+                                    setTimeout(() => {
+                                        belas[0].click();
+                                    }, 1000);
+                                }, 4500);
+                                break;
+                            case 17:
+                                setTimeout(() => {
+                                    tujuh[0].click();
+                                    setTimeout(() => {
+                                        belas[0].click();
+                                    }, 1000);
+                                }, 4500);
+                                break;
+                            case 18:
+                                setTimeout(() => {
+                                    delapan[0].click();
+                                    setTimeout(() => {
+                                        belas[0].click();
+                                    }, 1000);
+                                }, 4500);
+                                break;
+                            case 19:
+                                setTimeout(() => {
+                                    sembilan[0].click();
+                                    setTimeout(() => {
+                                        belas[0].click();
+                                    }, 1000);
+                                }, 4500);
+                            case 20:
+                                duaPuluh();
+                                break;
+                            case 21:
+                                duaPuluh();
+                                setTimeout(() => {
+                                    satu[0].click();
+                                }, 1000);
                                 break;
                             case 22:
-                                dua[0].click();
-                                puluh[0].click();
-                                dua[0].click();
+                                duaPuluh();
+                                setTimeout(() => {
+                                    dua[0].click();
+                                }, 6500);
                                 break;
                             case 23:
-                                dua[0].click();
-                                puluh[0].click();
-                                tiga[0].click();
+                                duaPuluh();
+                                setTimeout(() => {
+                                    tiga[0].click();
+                                }, 6500);
                                 break;
                             case 24:
-                                dua[0].click();
-                                puluh[0].click();
-                                empat[0].click();
+                                duaPuluh();
+                                setTimeout(() => {
+                                    empat[0].click();
+                                }, 6500);
                                 break;
                             case 25:
-                                dua[0].click();
-                                puluh[0].click();
-                                lima[0].click();
+                                duaPuluh();
+                                setTimeout(() => {
+                                    lima[0].click();
+                                }, 6500);
                                 break;
+                            case 26:
+                                duaPuluh();
+                                setTimeout(() => {
+                                    enam[0].click();
+                                }, 6500);
+                                break;
+                            case 27:
+                                duaPuluh();
+                                setTimeout(() => {
+                                    tujuh[0].click();
+                                }, 6500);
+                                break;
+                            case 28:
+                                duaPuluh();
+                                setTimeout(() => {
+                                    delapan[0].click();
+                                }, 6500);
+                                break;
+                            case 29:
+                                duaPuluh();
+                                setTimeout(() => {
+                                    sembilan[0].click();
+                                }, 6500);
+                                break;
+                            case 30:
+                                tigaPuluh();
+                                break;
+                            case 31:
+                                tigaPuluh();
+                                setTimeout(() => {
+                                    satu[0].click();
+                                }, 6500);
+                                break;
+                            case 32:
+                                tigaPuluh();
+                                setTimeout(() => {
+                                    dua[0].click();
+                                }, 6500);
+                                break;
+                            case 33:
+                                tigaPuluh();
+                                setTimeout(() => {
+                                    tiga[0].click();
+                                }, 6500);
+                                break;
+                            case 34:
+                                tigaPuluh();
+                                setTimeout(() => {
+                                    empat[0].click();
+                                }, 6500);
+                                break;
+                            case 35:
+                                tigaPuluh();
+                                setTimeout(() => {
+                                    lima[0].click();
+                                }, 6500);
+                                break;
+                            case 36:
+                                tigaPuluh();
+                                setTimeout(() => {
+                                    enam[0].click();
+                                }, 6500);
+                                break;
+                            case 37:
+                                tigaPuluh();
+                                setTimeout(() => {
+                                    tujuh[0].click();
+                                }, 6500);
+                                break;
+                            case 38:
+                                tigaPuluh();
+                                setTimeout(() => {
+                                    delapan[0].click();
+                                }, 6500);
+                                break;
+                            case 39:
+                                tigaPuluh();
+                                setTimeout(() => {
+                                    sembilan[0].click();
+                                }, 6500);
+                                break;
+                            case 40:
+                                empatPuluh();
+                                break;
+                            case 41:
+                                empatPuluh();
+                                setTimeout(() => {
+                                    satu[0].click();
+                                }, 6500);
+                                break;
+                            case 42:
+                                empatPuluh();
+                                setTimeout(() => {
+                                    dua[0].click();
+                                }, 6500);
+                                break;
+                            case 43:
+                                empatPuluh();
+                                setTimeout(() => {
+                                    tiga[0].click();
+                                }, 6500);
+                                break;
+                            case 44:
+                                empatPuluh();
+                                setTimeout(() => {
+                                    empat[0].click();
+                                }, 6500);
+                                break;
+                            case 45:
+                                empatPuluh();
+                                setTimeout(() => {
+                                    lima[0].click();
+                                }, 6500);
+                                break;
+                            case 46:
+                                empatPuluh();
+                                setTimeout(() => {
+                                    enam[0].click();
+                                }, 6500);
+                                break;
+                            case 47:
+                                empatPuluh();
+                                setTimeout(() => {
+                                    tujuh[0].click();
+                                }, 6500);
+                                break;
+                            case 48:
+                                empatPuluh();
+                                setTimeout(() => {
+                                    delapan[0].click();
+                                }, 6500);
+                                break;
+                            case 49:
+                                empatPuluh();
+                                setTimeout(() => {
+                                    sembilan[0].click();
+                                }, 6500);
+                                break;
+                            case 50:
+                                limaPuluh();
+                                break;
+                            case 51:
+                                limaPuluh();
+                                setTimeout(() => {
+                                    satu[0].click();
+                                }, 6500);
+                                break;
+                            case 52:
+                                limaPuluh();
+                                setTimeout(() => {
+                                    dua[0].click();
+                                }, 6500);
+                                break;
+                            case 53:
+                                limaPuluh();
+                                setTimeout(() => {
+                                    tiga[0].click();
+                                }, 6500);
+                                break;
+                            case 54:
+                                limaPuluh();
+                                setTimeout(() => {
+                                    empat[0].click();
+                                }, 6500);
+                                break;
+                            case 55:
+                                limaPuluh();
+                                setTimeout(() => {
+                                    lima[0].click();
+                                }, 6500);
+                                break;
+                            case 56:
+                                limaPuluh();    
+                                setTimeout(() => {
+                                    enam[0].click();
+                                }, 6500);
+                                break;
+                            case 57:
+                                limaPuluh();
+                                setTimeout(() => {
+                                    tujuh[0].click();
+                                }, 6500);
+                                break;
+                            case 58:
+                                limaPuluh();
+                                setTimeout(() => {
+                                    delapan[0].click();
+                                }, 6500);
+                                break;
+                            case 59:
+                                limaPuluh();
+                                setTimeout(() => {
+                                    sembilan[0].click();
+                                }, 6500);
+                                break;
+                            case 60:
+                                enamPuluh();
+                                break;
+                            case 61:
+                                enamPuluh();
+                                setTimeout(() => {
+
+                                    satu[0].click();
+                                }, 6500);
+                                break;
+                            case 62:
+                                enamPuluh();
+                                setTimeout(() => {
+                                    dua[0].click();
+                                }, 6500);
+                                break;
+                            case 63:
+                                enamPuluh();
+                                setTimeout(() => {
+                                    tiga[0].click();
+                                }, 6500);
+                                break;
+                            case 64:
+                                enamPuluh();
+
+                                setTimeout(() => {
+                                    empat[0].click();
+                                }, 6500);
+                                break;
+                            case 65:
+                                enamPuluh();
+                                setTimeout(() => {
+                                    lima[0].click();
+                                }, 6500);
+                                break;
+                            case 66:
+                                enamPuluh();
+                                setTimeout(() => {
+                                    enam[0].click();
+                                }, 6500);
+                                break;
+                            case 67:
+                                enamPuluh();
+                                setTimeout(() => {
+                                    tujuh[0].click();
+
+                                }, 6500);
+                                break;
+                            case 68:
+                                enamPuluh();
+                                setTimeout(() => {
+                                    delapan[0].click();
+                                }, 6500);
+                                break;
+                            case 69:
+                                enamPuluh();
+                                setTimeout(() => {
+                                    sembilan[0].click();
+                                }, 6500);
+                                break;
+                            case 70:
+                                tujuhPuluh();
+                                break;
+                            case 71:
+                                tujuhPuluh();
+                                setTimeout(() => {
+                                    satu[0].click();
+                                }, 6500);
+                                break;
+                            case 72:
+                                tujuhPuluh();
+                                setTimeout(() => {
+                                    dua[0].click();
+                                }, 6500);
+                                break;
+                            case 73:
+                                tujuhPuluh();
+                                setTimeout(() => {
+                                    tiga[0].click();
+                                }, 6500);
+                                break;
+                            case 74:
+                                tujuhPuluh();
+                                setTimeout(() => {
+                                    empat[0].click();
+                                }, 6500);
+                                break;
+                            case 75:
+                                tujuhPuluh();
+                                setTimeout(() => {
+                                    lima[0].click();
+                                }, 6500);
+                                break;
+                            case 76:
+                                tujuhPuluh();
+                                setTimeout(() => {
+                                    enam[0].click();
+                                }, 6500);
+                                break;
+                            case 77:
+                                tujuhPuluh();
+                                setTimeout(() => {
+                                    tujuh[0].click();
+                                }, 6500);
+                                break;
+                            case 78:
+                                tujuhPuluh();
+                                setTimeout(() => {
+                                    delapan[0].click();
+                                }, 6500);
+                                break;
+                            case 79:
+                                tujuhPuluh();
+                                setTimeout(() => {
+                                    sembilan[0].click();
+                                }, 6500);
+                                break;
+                            case 80:
+                                delapanPuluh();
+                                break;
+                            case 81:
+                                delapanPuluh();
+                                setTimeout(() => {
+                                    satu[0].click();
+                                }, 6500);
+                                break;
+                            case 82:
+                                delapanPuluh();
+                                setTimeout(() => {
+                                    dua[0].click();
+                                }, 6500);
+                                break;
+                            case 83:
+                                delapanPuluh();
+                                setTimeout(() => {
+                                    tiga[0].click();
+                                }, 6500);
+                                break;
+                            case 84:
+                                delapanPuluh();
+                                setTimeout(() => {
+                                    empat[0].click();
+                                }, 6500);
+                                break;
+                            case 85:
+                                delapanPuluh();
+                                setTimeout(() => {
+                                    lima[0].click();
+                                }, 6500);
+                                break;
+                            case 86:
+                                delapanPuluh();
+                                setTimeout(() => {
+                                    enam[0].click();
+                                }, 6500);
+                                break;
+                            case 87:
+                                delapanPuluh();
+                                setTimeout(() => {
+                                    tujuh[0].click();
+                                }, 6500);
+                                break;
+                            case 88:
+                                delapanPuluh();
+                                setTimeout(() => {
+                                    delapan[0].click();
+                                }, 6500);
+                                break;
+                            case 89:
+                                delapanPuluh();
+                                setTimeout(() => {
+                                    sembilan[0].click();
+                                }, 6500);
+                                break;
+                            case 90:
+                                sembilanPuluh();
+                                break;
+                            case 91:
+                                sembilanPuluh();
+                                setTimeout(() => {
+                                    satu[0].click();
+                                }, 6500);
+                                break;
+                            case 92:
+                                sembilanPuluh();
+                                setTimeout(() => {
+                                    dua[0].click();
+                                }, 6500);
+                                break;
+                            case 93:
+                                sembilanPuluh();
+                                setTimeout(() => {
+                                    tiga[0].click();
+                                }, 6500);
+                                break;
+                            case 94:
+                                sembilanPuluh();
+                                setTimeout(() => {
+                                    empat[0].click();
+                                }, 6500);
+                                break;
+                            case 95:
+                                sembilanPuluh();
+                                setTimeout(() => {
+                                    lima[0].click();
+                                }, 6500);
+                                break;
+                            case 96:
+                                sembilanPuluh();
+                                setTimeout(() => {
+                                    enam[0].click();
+                                }, 6500);
+                                break;
+                            case 97:
+                                sembilanPuluh();
+                                setTimeout(() => {
+                                    tujuh[0].click();
+                                }, 6500);
+                                break;
+                            case 98:
+                                sembilanPuluh();
+                                setTimeout(() => {
+                                    delapan[0].click();
+                                }, 6500);
+                                break;
+                            case 99:
+                                sembilanPuluh();
+                                setTimeout(() => {
+                                    sembilan[0].click();
+                                }, 6500);
+                                break;
+                            case 100:
+                                seratus();
+                                break;
+
                             default:
                                 break;
                         
                         
+                    }
+                    if(IdAntrian.current <= 11){
+                        theEnd();
+                    }else if(IdAntrian.current <= 20 || IdAntrian.current == 30 || IdAntrian.current == 40 || IdAntrian.current == 50 || IdAntrian.current == 60 || IdAntrian.current == 70 || IdAntrian.current == 80 || IdAntrian.current == 90 || IdAntrian.current == 100){
+                        theEnd2();
+                    }else if(IdAntrian.current < 90){
+                        theEnd3();
                     }
                 }
             }
@@ -313,6 +914,8 @@ function Antrian() {
                 });
                 console.log(dataAntrian);
                 setLoading(false);
+                IdChecker.current = 0;
+                IdAntrian.current = 0;
                 return;
             }else{
                 setDataAntrian(data[0]);
@@ -361,10 +964,10 @@ function Antrian() {
         // componentDidMount();
         return () => {
             console.log("cek123", dataAntrian, dataAntrianKasir);
-            // componentWillUnmount();
-            socket.off("receiveDataClient");
-            socket.off("receiveCurrAntrian");
-            socket.off("kasir:receiveCurrAntrian");
+            // // componentWillUnmount();
+            // socket.off("receiveDataClient");
+            // socket.off("receiveCurrAntrian");
+            // socket.off("kasir:receiveCurrAntrian");
         }
     }, []);
 
@@ -386,22 +989,7 @@ function Antrian() {
 
     const PerawatPlay = () => {
         // const [play] = useSound(silahkan);
-        const [perawat] = useSound(silahkanSound);
-        const [satu] = useSound(satuSound);
-        const [dua] = useSound(duaSound);
-        const [tiga] = useSound(tigaSound);
-        const [empat] = useSound(empatSound);
-        const [lima] = useSound(limaSound);
-        const [enam] = useSound(enamSound);
-        const [tujuh] = useSound(tujuhSound);
-        const [delapan] = useSound(delapanSound);
-        const [sembilan] = useSound(sembilanSound);
-        const [sepuluh] = useSound(sepuluhSound);
-        const [sebelas] = useSound(sebelasSound);
-        const [belas] = useSound(belasSound);
-        const [puluh] = useSound(puluhSound);
-        const [ratus] = useSound(ratusSound);
-        const [seratus] = useSound(seratusSound);
+        
 
         return (
             <div className="audioPanggilan">
@@ -422,6 +1010,9 @@ function Antrian() {
                 <button id="belas" name="belas" className="buttonhidden" onClick={belas}>belas</button>
                 <button id="seratus" name="seratus" className="buttonhidden" onClick={seratus}>seratus</button>
                 <button id="ratus" name="ratus" className="buttonhidden" onClick={ratus}>ratus</button>
+                <button id="bellFirst" name="bellFirst" className="buttonhidden" onClick={bellFirst}>bellFirst</button>
+                <button id="bellSecond" name="bellSecond" className="buttonhidden" onClick={bellSecond}>bellSecond</button>
+                <button id="nomorUrut" name="nomorUrut" className="buttonhidden" onClick={nomorUrut}>nomorUrut</button>
             </div>   
         )
     }
@@ -439,6 +1030,8 @@ function Antrian() {
     // }
 
     return (
+        <div>
+        {loading ? <h1>Loading....</h1> :
         <div className="content">
             {PerawatPlay()}
             {/* {playAntrian()} */}
@@ -504,35 +1097,39 @@ function Antrian() {
                 })()
             }  
 		
-		<div className="audio">
-			<audio id="in" src="<?= base_url(); ?>/assets/audio/new/in.wav"></audio>
-			<audio id="out" src="<?= base_url(); ?>/assets/audio/new/out.wav"></audio>
-			<audio id="suarabel" src="<?= base_url(); ?>/assets/audio/new/Airport_Bell.MP3"></audio>
-			<audio id="suarabelnomorurut" src="<?= base_url(); ?>/assets/audio/new/nomor-urut.MP3"></audio>
-			<audio id="suarabelsuarabelloket" src="<?= base_url(); ?>/assets/audio/new/konter.MP3"></audio>
-			<audio id="belas" src="<?= base_url(); ?>/assets/audio/new/belas.MP3"></audio>
-			<audio id="sebelas" src="<?= base_url(); ?>/assets/audio/new/sebelas.MP3"></audio>
-			<audio id="puluh" src="<?= base_url(); ?>/assets/audio/new/puluh.MP3"></audio>
-			<audio id="sepuluh" src="<?= base_url(); ?>/assets/audio/new/sepuluh.MP3"></audio>
-			<audio id="ratus" src="<?= base_url(); ?>/assets/audio/new/ratus.MP3"></audio>
-			<audio id="seratus" src="<?= base_url(); ?>/assets/audio/new/seratus.MP3"></audio>
-			<audio id="suarabelloket1" src="<?= base_url(); ?>/assets/audio/new/1.MP3"></audio>
-			<audio id="suarabelloket2" src="<?= base_url(); ?>/assets/audio/new/2.MP3"></audio>
-			<audio id="suarabelloket3" src="<?= base_url(); ?>/assets/audio/new/3.MP3"></audio>
-			<audio id="suarabelloket4" src="<?= base_url(); ?>/assets/audio/new/4.MP3"></audio>
-			<audio id="suarabelloket5" src="<?= base_url(); ?>/assets/audio/new/5.MP3"></audio>
-			<audio id="suarabelloket6" src="<?= base_url(); ?>/assets/audio/new/6.MP3"></audio>
-			<audio id="suarabelloket7" src="<?= base_url(); ?>/assets/audio/new/7.MP3"></audio>
-			<audio id="suarabelloket8" src="<?= base_url(); ?>/assets/audio/new/8.MP3"></audio>
-			<audio id="suarabelloket9" src="<?= base_url(); ?>/assets/audio/new/9.MP3"></audio>
-			<audio id="suarabelloket10" src="<?= base_url(); ?>/assets/audio/new/sepuluh.MP3"></audio>
-			{/* <audio id="loket" src="<?= base_url(); ?>/assets/audio/new/loket.MP3"></audio> --> */}
-			{/* <audio id="perawat" onClick={playPerawat} onCanPlay={ () => { document.getElementById('perawat').play(); } } src="../assets/audio/new/perawat.MP3"></audio> */}
-		</div>
+                <div className="audio">
+                    <audio id="in" src="<?= base_url(); ?>/assets/audio/new/in.wav"></audio>
+                    <audio id="out" src="<?= base_url(); ?>/assets/audio/new/out.wav"></audio>
+                    <audio id="suarabel" src="<?= base_url(); ?>/assets/audio/new/Airport_Bell.MP3"></audio>
+                    <audio id="suarabelnomorurut" src="<?= base_url(); ?>/assets/audio/new/nomor-urut.MP3"></audio>
+                    <audio id="suarabelsuarabelloket" src="<?= base_url(); ?>/assets/audio/new/konter.MP3"></audio>
+                    <audio id="belas" src="<?= base_url(); ?>/assets/audio/new/belas.MP3"></audio>
+                    <audio id="sebelas" src="<?= base_url(); ?>/assets/audio/new/sebelas.MP3"></audio>
+                    <audio id="puluh" src="<?= base_url(); ?>/assets/audio/new/puluh.MP3"></audio>
+                    <audio id="sepuluh" src="<?= base_url(); ?>/assets/audio/new/sepuluh.MP3"></audio>
+                    <audio id="ratus" src="<?= base_url(); ?>/assets/audio/new/ratus.MP3"></audio>
+                    <audio id="seratus" src="<?= base_url(); ?>/assets/audio/new/seratus.MP3"></audio>
+                    <audio id="suarabelloket1" src="<?= base_url(); ?>/assets/audio/new/1.MP3"></audio>
+                    <audio id="suarabelloket2" src="<?= base_url(); ?>/assets/audio/new/2.MP3"></audio>
+                    <audio id="suarabelloket3" src="<?= base_url(); ?>/assets/audio/new/3.MP3"></audio>
+                    <audio id="suarabelloket4" src="<?= base_url(); ?>/assets/audio/new/4.MP3"></audio>
+                    <audio id="suarabelloket5" src="<?= base_url(); ?>/assets/audio/new/5.MP3"></audio>
+                    <audio id="suarabelloket6" src="<?= base_url(); ?>/assets/audio/new/6.MP3"></audio>
+                    <audio id="suarabelloket7" src="<?= base_url(); ?>/assets/audio/new/7.MP3"></audio>
+                    <audio id="suarabelloket8" src="<?= base_url(); ?>/assets/audio/new/8.MP3"></audio>
+                    <audio id="suarabelloket9" src="<?= base_url(); ?>/assets/audio/new/9.MP3"></audio>
+                    <audio id="suarabelloket10" src="<?= base_url(); ?>/assets/audio/new/sepuluh.MP3"></audio>
+                    {/* <audio id="loket" src="<?= base_url(); ?>/assets/audio/new/loket.MP3"></audio> --> */}
+                    {/* <audio id="perawat" onClick={playPerawat} onCanPlay={ () => { document.getElementById('perawat').play(); } } src="../assets/audio/new/perawat.MP3"></audio> */}
+                </div>
             <div className="footer">
-            <marquee behaviour="alternate"><p>RS Awal Bros Pekanbaru - Semoga Lekas Sembuh</p></marquee>
+                <marquee behaviour="alternate"><p>RS Awal Bros Pekanbaru - Semoga Lekas Sembuh</p></marquee>
             </div>
+            
         </div>
+        }
+    </div>
+
 )}
 
 export default Antrian;
