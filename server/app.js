@@ -303,6 +303,10 @@ io.on("connection", (socket) => {
         socket.broadcast.emit("receiveToUpdateAntrian", data);
     });
 
+    socket.on("sendUlangiPanggilan", (data) => {
+        socket.broadcast.emit("receiveUlangiPanggilan", data);
+    });
+
         
 });
 

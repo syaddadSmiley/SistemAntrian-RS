@@ -113,25 +113,8 @@ function Antrian() {
 
     }
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-            
-            // console.log(day)
-            // console.log(moment().format('hh:mm:ss'));
-            setTime(moment().format('hh:mm:ss'));
-            console.log(IdChecker, IdAntrian.current)
-            // dispa
-            // async function fetchCurrAntrianPerawat() {
-            //     const response = await fetch("http://localhost:3001/perawat/getLastCalledAntrian");
-            //     console.log(response);
-            //     const data = await response.json();
-            //     console.log(data);
-            //     return data;
-            // }
-            // fetchCurrAntrianPerawat().then((data) => {
-            //     if(data.id > dat)
-            // perawat.apply(this, audoClips);
-            var perawat = document.getElementsByName("perawat");
+    function soundAntrian(id){
+        var perawat = document.getElementsByName("perawat");
             var satu = document.getElementsByName("satu");
             var dua = document.getElementsByName("dua");
             var tiga = document.getElementsByName("tiga");
@@ -165,7 +148,7 @@ function Antrian() {
                     perawat[0].click();
                     setTimeout(() => {
                         bellSecond[0].click();
-                    }, 2000);
+                    }, 2250);
                 }, 5500);
             }
             function theEnd2(){
@@ -174,7 +157,7 @@ function Antrian() {
                     perawat[0].click();
                     setTimeout(() => {
                         bellSecond[0].click();
-                    }, 2000);
+                    }, 2250);
                 }, 6500);
             }
             function theEnd3(){
@@ -183,7 +166,23 @@ function Antrian() {
                     perawat[0].click();
                     setTimeout(() => {
                         bellSecond[0].click();
-                    }, 2000);
+                    }, 2250);
+                }, 6500);
+            }
+            function theEnd4(){
+                setTimeout(() => {
+                    perawat[0].click();
+                    setTimeout(() => {
+                        bellSecond[0].click();
+                    }, 2250);
+                }, 8500);
+            }
+            function theEnd5(){
+                setTimeout(() => {
+                    perawat[0].click();
+                    setTimeout(() => {
+                        bellSecond[0].click();
+                    }, 2250);
                 }, 7500);
             }
 
@@ -251,6 +250,11 @@ function Antrian() {
                     }, 1000);
                 }, 4500);
             }
+            function seratusX(){
+                setTimeout(() => {
+                    seratus[0].click();
+                }, 4500);
+            }
 
 
             // perawat[0].click();
@@ -258,10 +262,8 @@ function Antrian() {
             // x.keys().next().value[1].click();
             // x.values().next().value[1].click();
             // console.log(x);
-            if (IdChecker.current !== IdAntrian.current) {
                 // IdChecker = dataAntrian.id;
                 beginning();
-                IdChecker.current = dataAntrian.id;
                 if (IdAntrian.current !== 0){
                         switch(IdAntrian.current){
                             case 1:
@@ -842,23 +844,202 @@ function Antrian() {
                                 }, 6500);
                                 break;
                             case 100:
-                                seratus();
+                                seratusX();
                                 break;
-
+                            case 101:
+                                seratusX();
+                                setTimeout(() => {
+                                    satu[0].click();
+                                }, 5500);
+                                break;
+                            case 102:
+                                seratusX();
+                                setTimeout(() => {
+                                    dua[0].click();
+                                }, 5500);
+                                break;
+                            case 103:
+                                seratusX();
+                                setTimeout(() => {
+                                    tiga[0].click();
+                                }, 5500);
+                                break;
+                            case 104:
+                                seratusX();
+                                setTimeout(() => {
+                                    empat[0].click();
+                                }, 5500);
+                                break;
+                            case 105:
+                                seratusX();
+                                setTimeout(() => {
+                                    lima[0].click();
+                                }, 5500);
+                                break;
+                            case 106:
+                                seratusX();
+                                setTimeout(() => {
+                                    enam[0].click();
+                                }, 5500);
+                                break;
+                            case 107:
+                                seratusX();
+                                setTimeout(() => {
+                                    tujuh[0].click();
+                                }, 5500);
+                                break;
+                            case 108:
+                                seratusX();
+                                setTimeout(() => {
+                                    delapan[0].click();
+                                }, 5500);
+                                break;
+                            case 109:
+                                seratusX();
+                                setTimeout(() => {
+                                    sembilan[0].click();
+                                }, 5500);
+                                break;
+                            case 110:
+                                seratusX();
+                                setTimeout(() => {
+                                    sepuluh[0].click();
+                                }, 5500);
+                                break;
+                            case 111:
+                                seratusX();
+                                setTimeout(() => {
+                                    sebelas[0].click();
+                                }, 5500);
+                                break;
+                            case 112:
+                                seratusX();
+                                setTimeout(() => {
+                                    dua[0].click();
+                                    setTimeout(() => {
+                                        belas[0].click();
+                                    }, 1000);
+                                }, 5500);
+                                break;
+                            case 113:
+                                seratusX();
+                                setTimeout(() => {
+                                    tiga[0].click();
+                                    setTimeout(() => {
+                                        belas[0].click();
+                                    }, 1000);
+                                }, 5500);
+                                break;
+                            case 114:
+                                seratusX();
+                                setTimeout(() => {
+                                    empat[0].click();
+                                    setTimeout(() => {
+                                        belas[0].click();
+                                    }, 1000);
+                                }, 5500);
+                                break;
+                            case 115:
+                                seratusX();
+                                setTimeout(() => {
+                                    lima[0].click();
+                                    setTimeout(() => {
+                                        belas[0].click();
+                                    }, 1000);
+                                }, 5500);
+                                break;
+                            case 116:
+                                seratusX();
+                                setTimeout(() => {
+                                    enam[0].click();
+                                    setTimeout(() => {
+                                        belas[0].click();
+                                    }, 1000);
+                                }, 5500);
+                                break;
+                            case 117:
+                                seratusX();
+                                setTimeout(() => {
+                                    tujuh[0].click();
+                                    setTimeout(() => {
+                                        belas[0].click();
+                                    }, 1000);
+                                }, 5500);
+                                break;
+                            case 118:
+                                seratusX();
+                                setTimeout(() => {
+                                    delapan[0].click();
+                                    setTimeout(() => {
+                                        belas[0].click();
+                                    }, 1000);
+                                }, 5500);
+                                break;
+                            case 119:
+                                seratusX();
+                                setTimeout(() => {
+                                    sembilan[0].click();
+                                    setTimeout(() => {
+                                        belas[0].click();
+                                    }, 1000);
+                                }, 5500);
+                                break;
+                            case 120:
+                                seratusX();
+                                setTimeout(() => {
+                                    duaPuluh();
+                                }, 5500);
+                                break;
+                            case 121:
+                                seratusX();
+                                setTimeout(() => {
+                                    duaPuluh();
+                                    setTimeout(() => {
+                                        satu[0].click();
+                                    }, 1000);
+                                }, 5500);
+                                break;
                             default:
                                 break;
-                        
                         
                     }
                     if(IdAntrian.current <= 11){
                         theEnd();
                     }else if(IdAntrian.current <= 20 || IdAntrian.current == 30 || IdAntrian.current == 40 || IdAntrian.current == 50 || IdAntrian.current == 60 || IdAntrian.current == 70 || IdAntrian.current == 80 || IdAntrian.current == 90 || IdAntrian.current == 100){
                         theEnd2();
-                    }else if(IdAntrian.current < 90){
+                    }else if(IdAntrian.current <= 111){
                         theEnd3();
+                    }else if(IdAntrian.current == 120 || IdAntrian.current == 130 || IdAntrian.current == 140 || IdAntrian.current == 150 || IdAntrian.current == 160 || IdAntrian.current == 170 || IdAntrian.current == 180 || IdAntrian.current == 190){
+                        theEnd4();
+                    }else if(IdAntrian.current <= 199){
+                        theEnd5();
                     }
                 }
+    }
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            
+            // console.log(day)
+            // console.log(moment().format('hh:mm:ss'));
+            setTime(moment().format('hh:mm:ss'));
+            console.log(IdChecker, IdAntrian.current)
+            if(IdAntrian.current !== IdChecker.current){
+                IdChecker.current = IdAntrian.current;
+                soundAntrian(IdAntrian.current);
             }
+            // dispa
+            // async function fetchCurrAntrianPerawat() {
+            //     const response = await fetch("http://localhost:3001/perawat/getLastCalledAntrian");
+            //     console.log(response);
+            //     const data = await response.json();
+            //     console.log(data);
+            //     return data;
+            // }
+            // fetchCurrAntrianPerawat().then((data) => {
+            //     if(data.id > dat)
+            // perawat.apply(this, audoClips);
+            
         }, 1000);
         return () => clearInterval(interval);
     }, []);
@@ -985,7 +1166,27 @@ function Antrian() {
             console.log("kasir:receiveToUpdateAntrian");
             window.location.reload();
         });
+        return () => {
+            socket.off("receiveToUpdateAntrian");
+            socket.off("kasir:receiveToUpdateAntrian");
+        }
     }, []);
+
+    useEffect(() => {
+        socket.on("receiveUlangiPanggilan", (data) => {
+            console.log("receiveUlangiPanggilan");
+            console.log(data);
+            if(data.id === dataAntrian.id){
+                console.log("id sama");
+                soundAntrian()
+            }
+            });
+        return () => {
+            socket.off("receiveUlangiPanggilan");
+        }
+    }, []);
+
+
 
     const PerawatPlay = () => {
         // const [play] = useSound(silahkan);

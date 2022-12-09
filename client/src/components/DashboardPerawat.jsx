@@ -48,6 +48,10 @@ function DashboardPerawat(){
         socket.emit("askNextAntrian", {table: "data_client", message: "dari dashboard", id: dataAntrian.id, counter: data.loket});
     };
 
+    const ulangiPanggilan = () => {
+        socket.emit("sendUlangiPanggilan", {id: dataAntrian.id, id_da: dataAntrian.id_da, counter: dataAntrian.counter, waktu: dataAntrian.waktu, status: dataAntrian.status, waktu_panggil: dataAntrian.waktu_panggil, existence: dataAntrian.existence});
+    };
+
     const getNextAntrian = async () => {
         console.log(dataAntrian.id);
         // console.log(loket);
@@ -292,7 +296,7 @@ function DashboardPerawat(){
                         </div>
                         <div className="container">
                             <div className="col-md-10">
-                                <button className="btn btn-small btn-primary try_queue" type="button" style={{fontSize: '30px', fontWeight: 'bold'}}>
+                                <button onClick={ulangiPanggilan} className="btn btn-small btn-primary try_queue" type="button" style={{fontSize: '30px', fontWeight: 'bold'}}>
                                     Ulangi Panggilan &nbsp;<span className=" fa fa-volume-up"></span>
                                 </button>
                                 {/* <button onClick={changeNoExistence()} className="btn btn-small btn-primary tidak" type="button" style={{fontSize: '30px', fontWeight: 'bold'}}>
