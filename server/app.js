@@ -302,9 +302,15 @@ io.on("connection", (socket) => {
     socket.on("askToUpdateAntrian", (data) => {
         socket.broadcast.emit("receiveToUpdateAntrian", data);
     });
+    socket.on("kasir:askToUpdateAntrian", (data) => {
+        socket.broadcast.emit("kasir:receiveToUpdateAntrian", data);
+    });
 
     socket.on("sendUlangiPanggilan", (data) => {
         socket.broadcast.emit("receiveUlangiPanggilan", data);
+    });
+    socket.on("kasir:sendUlangiPanggilan", (data) => {
+        socket.broadcast.emit("kasir:receiveUlangiPanggilan", data);
     });
 
         

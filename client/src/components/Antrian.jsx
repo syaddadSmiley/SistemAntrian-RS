@@ -22,6 +22,7 @@ import sebelasSound from '../assets/audio/new/sebelas.MP3';
 import sepuluhSound from '../assets/audio/new/sepuluh.MP3';
 import seratusSound from '../assets/audio/new/seratus.MP3';
 import silahkanSound from '../assets/audio/new/silahkan_ke_perawat.MP3';
+import silahkanKasirSound from '../assets/audio/new/silahkan_ke_kasir.mp3';
 import belasSound from '../assets/audio/new/belas.MP3';
 import puluhSound from '../assets/audio/new/puluh.MP3';
 import bellFirstSound from '../assets/audio/new/Airport_Bell_First.mp3';
@@ -52,6 +53,9 @@ function Antrian() {
     let IdChecker = useRef(0);
     // const [IdAntrian, setIdAntrian] = useReducer(reducer, 0);
     let IdAntrian = useRef(0);
+
+    let IdCheckerKasir = useRef(0);
+    let IdAntrianKasir = useRef(0);
     const [dataAntrian, setDataAntrian] = useState({
         id: "",
         id_da: "",
@@ -77,6 +81,7 @@ function Antrian() {
 
     var [day, setDay] = useState();
     var [time, setTime] = useState();
+    const [kasir] = useSound(silahkanKasirSound);
     const [perawat] = useSound(silahkanSound);
     const [satu] = useSound(satuSound);
     const [dua] = useSound(duaSound);
@@ -96,39 +101,24 @@ function Antrian() {
     const [bellFirst] = useSound(bellFirstSound);
     const [bellSecond] = useSound(bellSecondSound);
     const [nomorUrut] = useSound(nomorUrutSound);
-
-    const sekarang = () => {
-        var puluh = document.getElementsByName("puluh");
-        var dua = document.getElementsByName("dua");
-        var satu = document.getElementsByName("satu");
-
-        dua[0].click();
-        setTimeout(() => {
-            // puluh[0].click();
-            console.log("first");
-            setTimeout(() => {
-                console.log("second");
-            }, 5000);
-        }, 4500);
-
-    }
+    const [satuAngka] = useSound(satuSound);
 
     function soundAntrian(id){
         var perawat = document.getElementsByName("perawat");
-            var satu = document.getElementsByName("satu");
-            var dua = document.getElementsByName("dua");
-            var tiga = document.getElementsByName("tiga");
-            var empat = document.getElementsByName("empat");
-            var lima = document.getElementsByName("lima");
-            var enam = document.getElementsByName("enam");
-            var tujuh = document.getElementsByName("tujuh");
-            var delapan = document.getElementsByName("delapan");
-            var sembilan = document.getElementsByName("sembilan");
+            var satu = document.getElementsByName("1");
+            var dua = document.getElementsByName("2");
+            var tiga = document.getElementsByName("3");
+            var empat = document.getElementsByName("4");
+            var lima = document.getElementsByName("5");
+            var enam = document.getElementsByName("6");
+            var tujuh = document.getElementsByName("7");
+            var delapan = document.getElementsByName("8");
+            var sembilan = document.getElementsByName("9");
             var puluh = document.getElementsByName("puluh");
             var ratus = document.getElementsByName("ratus");
             var ribu = document.getElementsByName("ribu");
             var sebelas = document.getElementsByName("sebelas");
-            var sepuluh = document.getElementsByName("sepuluh");
+            var sepuluh = document.getElementsByName("10");
             var seratus = document.getElementsByName("seratus");
             var belas = document.getElementsByName("belas");
             var bellFirst = document.getElementsByName("bellFirst");
@@ -143,6 +133,7 @@ function Antrian() {
                 }, 3250);
             }
             function theEnd(){
+                console.log("The end1");
                 // silahkan[0].play();
                 setTimeout(() => {
                     perawat[0].click();
@@ -152,6 +143,7 @@ function Antrian() {
                 }, 5500);
             }
             function theEnd2(){
+                console.log("The end2");
                 // silahkan[0].play();
                 setTimeout(() => {
                     perawat[0].click();
@@ -161,15 +153,16 @@ function Antrian() {
                 }, 6500);
             }
             function theEnd3(){
-                // silahkan[0].play();
+                console.log("The end3");
                 setTimeout(() => {
                     perawat[0].click();
                     setTimeout(() => {
                         bellSecond[0].click();
                     }, 2250);
-                }, 6500);
+                }, 7500);
             }
             function theEnd4(){
+                console.log("The end4");
                 setTimeout(() => {
                     perawat[0].click();
                     setTimeout(() => {
@@ -178,6 +171,7 @@ function Antrian() {
                 }, 8500);
             }
             function theEnd5(){
+                console.log("The end5");
                 setTimeout(() => {
                     perawat[0].click();
                     setTimeout(() => {
@@ -265,744 +259,210 @@ function Antrian() {
                 // IdChecker = dataAntrian.id;
                 beginning();
                 if (IdAntrian.current !== 0){
-                        switch(IdAntrian.current){
-                            case 1:
+                    for(let i=1; i < IdAntrian.current+1; i++){
+                        if(i==IdAntrian.current){
+                            if(IdAntrian.current<=10){
                                 setTimeout(() => {
-                                    satu[0].click();
+                                    document.getElementsByName(i)[0].click();
                                 }, 4500);
                                 break;
-                            case 2:
+                            }else if(IdAntrian.current==11){
                                 setTimeout(() => {
-                                dua[0].click();
+                                    sebelas[0].click();
                                 }, 4500);
                                 break;
-                            case 3:
-                                setTimeout(() => {
-                                tiga[0].click();
-                                }, 4500);
-                                break;
-                            case 4:
-                                setTimeout(() => {
-                                empat[0].click();
-                                }, 4500);
-                                break;
-                            case 5:
-                                setTimeout(() => {
-                                lima[0].click();
-                                }, 4500);
-                                break;
-                            case 6:
-                                setTimeout(() => {
-                                enam[0].click();
-                                }, 4500);
-                                break;
-                            case 7:
-                                setTimeout(() => {
-                                tujuh[0].click();
-                                }, 4500);
-                                break;
-                            case 8:
-                                setTimeout(() => {
-                                delapan[0].click();
-                                }, 4500);
-                                break;
-                            case 9:
-                                setTimeout(() => {
-                                sembilan[0].click();
-                                }, 4500);
-                                break;
-                            case 10:
-                                setTimeout(() => {
-                                sepuluh[0].click();
-                                }, 4500);
-                                break;
-                            case 11:
-                                setTimeout(() => {
-                                sebelas[0].click();
-                                }, 4500);
-                                break;
-                            case 12:
-                                setTimeout(() => {
-                                    dua[0].click();
-                                    setTimeout(() => {
-                                        belas[0].click();
-                                    }, 1000);
-                                }, 4500);
-                                break;
-                            case 13:
-                                setTimeout(() => {
-                                    tiga[0].click();
-                                    setTimeout(() => {
-                                        belas[0].click();
-                                    }, 1000);
-                                }, 4500);
-                                break;
-                            case 14:
-                                setTimeout(() => {
-                                    empat[0].click();
-                                    setTimeout(() => {
-                                        belas[0].click();
-                                    }, 1000);
-                                }, 4500);
-                                break;
-                            case 15:
-                                setTimeout(() => {
-                                    lima[0].click();
-                                    setTimeout(() => {
-                                        belas[0].click();
-                                    }, 1000);
-                                }, 4500);
-                                break;
-                            case 16:
-                                setTimeout(() => {
-                                    enam[0].click();
-                                    setTimeout(() => {
-                                        belas[0].click();
-                                    }, 1000);
-                                }, 4500);
-                                break;
-                            case 17:
-                                setTimeout(() => {
-                                    tujuh[0].click();
-                                    setTimeout(() => {
-                                        belas[0].click();
-                                    }, 1000);
-                                }, 4500);
-                                break;
-                            case 18:
-                                setTimeout(() => {
-                                    delapan[0].click();
-                                    setTimeout(() => {
-                                        belas[0].click();
-                                    }, 1000);
-                                }, 4500);
-                                break;
-                            case 19:
-                                setTimeout(() => {
-                                    sembilan[0].click();
-                                    setTimeout(() => {
-                                        belas[0].click();
-                                    }, 1000);
-                                }, 4500);
-                            case 20:
-                                duaPuluh();
-                                break;
-                            case 21:
-                                duaPuluh();
-                                setTimeout(() => {
-                                    satu[0].click();
-                                }, 1000);
-                                break;
-                            case 22:
-                                duaPuluh();
-                                setTimeout(() => {
-                                    dua[0].click();
-                                }, 6500);
-                                break;
-                            case 23:
-                                duaPuluh();
-                                setTimeout(() => {
-                                    tiga[0].click();
-                                }, 6500);
-                                break;
-                            case 24:
-                                duaPuluh();
-                                setTimeout(() => {
-                                    empat[0].click();
-                                }, 6500);
-                                break;
-                            case 25:
-                                duaPuluh();
-                                setTimeout(() => {
-                                    lima[0].click();
-                                }, 6500);
-                                break;
-                            case 26:
-                                duaPuluh();
-                                setTimeout(() => {
-                                    enam[0].click();
-                                }, 6500);
-                                break;
-                            case 27:
-                                duaPuluh();
-                                setTimeout(() => {
-                                    tujuh[0].click();
-                                }, 6500);
-                                break;
-                            case 28:
-                                duaPuluh();
-                                setTimeout(() => {
-                                    delapan[0].click();
-                                }, 6500);
-                                break;
-                            case 29:
-                                duaPuluh();
-                                setTimeout(() => {
-                                    sembilan[0].click();
-                                }, 6500);
-                                break;
-                            case 30:
-                                tigaPuluh();
-                                break;
-                            case 31:
-                                tigaPuluh();
-                                setTimeout(() => {
-                                    satu[0].click();
-                                }, 6500);
-                                break;
-                            case 32:
-                                tigaPuluh();
-                                setTimeout(() => {
-                                    dua[0].click();
-                                }, 6500);
-                                break;
-                            case 33:
-                                tigaPuluh();
-                                setTimeout(() => {
-                                    tiga[0].click();
-                                }, 6500);
-                                break;
-                            case 34:
-                                tigaPuluh();
-                                setTimeout(() => {
-                                    empat[0].click();
-                                }, 6500);
-                                break;
-                            case 35:
-                                tigaPuluh();
-                                setTimeout(() => {
-                                    lima[0].click();
-                                }, 6500);
-                                break;
-                            case 36:
-                                tigaPuluh();
-                                setTimeout(() => {
-                                    enam[0].click();
-                                }, 6500);
-                                break;
-                            case 37:
-                                tigaPuluh();
-                                setTimeout(() => {
-                                    tujuh[0].click();
-                                }, 6500);
-                                break;
-                            case 38:
-                                tigaPuluh();
-                                setTimeout(() => {
-                                    delapan[0].click();
-                                }, 6500);
-                                break;
-                            case 39:
-                                tigaPuluh();
-                                setTimeout(() => {
-                                    sembilan[0].click();
-                                }, 6500);
-                                break;
-                            case 40:
-                                empatPuluh();
-                                break;
-                            case 41:
-                                empatPuluh();
-                                setTimeout(() => {
-                                    satu[0].click();
-                                }, 6500);
-                                break;
-                            case 42:
-                                empatPuluh();
-                                setTimeout(() => {
-                                    dua[0].click();
-                                }, 6500);
-                                break;
-                            case 43:
-                                empatPuluh();
-                                setTimeout(() => {
-                                    tiga[0].click();
-                                }, 6500);
-                                break;
-                            case 44:
-                                empatPuluh();
-                                setTimeout(() => {
-                                    empat[0].click();
-                                }, 6500);
-                                break;
-                            case 45:
-                                empatPuluh();
-                                setTimeout(() => {
-                                    lima[0].click();
-                                }, 6500);
-                                break;
-                            case 46:
-                                empatPuluh();
-                                setTimeout(() => {
-                                    enam[0].click();
-                                }, 6500);
-                                break;
-                            case 47:
-                                empatPuluh();
-                                setTimeout(() => {
-                                    tujuh[0].click();
-                                }, 6500);
-                                break;
-                            case 48:
-                                empatPuluh();
-                                setTimeout(() => {
-                                    delapan[0].click();
-                                }, 6500);
-                                break;
-                            case 49:
-                                empatPuluh();
-                                setTimeout(() => {
-                                    sembilan[0].click();
-                                }, 6500);
-                                break;
-                            case 50:
-                                limaPuluh();
-                                break;
-                            case 51:
-                                limaPuluh();
-                                setTimeout(() => {
-                                    satu[0].click();
-                                }, 6500);
-                                break;
-                            case 52:
-                                limaPuluh();
-                                setTimeout(() => {
-                                    dua[0].click();
-                                }, 6500);
-                                break;
-                            case 53:
-                                limaPuluh();
-                                setTimeout(() => {
-                                    tiga[0].click();
-                                }, 6500);
-                                break;
-                            case 54:
-                                limaPuluh();
-                                setTimeout(() => {
-                                    empat[0].click();
-                                }, 6500);
-                                break;
-                            case 55:
-                                limaPuluh();
-                                setTimeout(() => {
-                                    lima[0].click();
-                                }, 6500);
-                                break;
-                            case 56:
-                                limaPuluh();    
-                                setTimeout(() => {
-                                    enam[0].click();
-                                }, 6500);
-                                break;
-                            case 57:
-                                limaPuluh();
-                                setTimeout(() => {
-                                    tujuh[0].click();
-                                }, 6500);
-                                break;
-                            case 58:
-                                limaPuluh();
-                                setTimeout(() => {
-                                    delapan[0].click();
-                                }, 6500);
-                                break;
-                            case 59:
-                                limaPuluh();
-                                setTimeout(() => {
-                                    sembilan[0].click();
-                                }, 6500);
-                                break;
-                            case 60:
-                                enamPuluh();
-                                break;
-                            case 61:
-                                enamPuluh();
-                                setTimeout(() => {
 
-                                    satu[0].click();
+                            }else if(IdAntrian.current<=19){
+                                setTimeout(() => {
+                                    var x = i%10;
+                                    document.getElementsByName(x)[0].click();
+                                    setTimeout(()=> {
+                                        belas[0].click();
+                                    }, 1000);
+                                }, 4500);
+                                break;
+                            }else if(IdAntrian.current==20){
+                                duaPuluh();
+                                break;
+                       
+                            }else if(IdAntrian.current<=29){
+                                var x = i%20;
+                                console.log("AWDW", x);
+                                duaPuluh();
+                                setTimeout(() => {
+                                    document.getElementsByName(x)[0].click();
                                 }, 6500);
                                 break;
-                            case 62:
+                            }else if(IdAntrian.current==30){
+                                tigaPuluh();
+                                break;
+                            
+                            }else if(IdAntrian.current<=39){
+                                var x = i%30;
+                                console.log("AWDW", x);
+                                tigaPuluh();
+                                setTimeout(() => {
+                                    document.getElementsByName(x)[0].click();
+                                }, 6500);
+                                break;
+                            }else if(IdAntrian.current==40){
+                                empatPuluh();
+                                break;
+                            
+                            }else if(IdAntrian.current<=49){
+                                var x = i%40;
+                                console.log("AWDW", x);
+                                empatPuluh();
+                                setTimeout(() => {
+                                    document.getElementsByName(x)[0].click();
+                                }, 6500);
+                                break;
+                            }else if(IdAntrian.current==50){
+                                limaPuluh();
+                                break;
+                            
+                            }else if(IdAntrian.current<=59){
+                                var x = i%50;
+                                console.log("AWDW", x);
+                                limaPuluh();
+                                setTimeout(() => {
+                                    document.getElementsByName(x)[0].click();
+                                }, 6500);
+                                break;
+                            }else if(IdAntrian.current==60){
+                                enamPuluh();
+                                break;
+                            
+                            }else if(IdAntrian.current<=69){
+                                var x = i%60;
+                                console.log("AWDW", x);
                                 enamPuluh();
                                 setTimeout(() => {
-                                    dua[0].click();
+                                    document.getElementsByName(x)[0].click();
                                 }, 6500);
                                 break;
-                            case 63:
-                                enamPuluh();
-                                setTimeout(() => {
-                                    tiga[0].click();
-                                }, 6500);
-                                break;
-                            case 64:
-                                enamPuluh();
-
-                                setTimeout(() => {
-                                    empat[0].click();
-                                }, 6500);
-                                break;
-                            case 65:
-                                enamPuluh();
-                                setTimeout(() => {
-                                    lima[0].click();
-                                }, 6500);
-                                break;
-                            case 66:
-                                enamPuluh();
-                                setTimeout(() => {
-                                    enam[0].click();
-                                }, 6500);
-                                break;
-                            case 67:
-                                enamPuluh();
-                                setTimeout(() => {
-                                    tujuh[0].click();
-
-                                }, 6500);
-                                break;
-                            case 68:
-                                enamPuluh();
-                                setTimeout(() => {
-                                    delapan[0].click();
-                                }, 6500);
-                                break;
-                            case 69:
-                                enamPuluh();
-                                setTimeout(() => {
-                                    sembilan[0].click();
-                                }, 6500);
-                                break;
-                            case 70:
+                            }else if(IdAntrian.current==70){
                                 tujuhPuluh();
                                 break;
-                            case 71:
+                            
+                            }else if(IdAntrian.current<=79){
+                                var x = i%70;
+                                console.log("AWDW", x);
                                 tujuhPuluh();
                                 setTimeout(() => {
-                                    satu[0].click();
+                                    document.getElementsByName(x)[0].click();
                                 }, 6500);
                                 break;
-                            case 72:
-                                tujuhPuluh();
-                                setTimeout(() => {
-                                    dua[0].click();
-                                }, 6500);
-                                break;
-                            case 73:
-                                tujuhPuluh();
-                                setTimeout(() => {
-                                    tiga[0].click();
-                                }, 6500);
-                                break;
-                            case 74:
-                                tujuhPuluh();
-                                setTimeout(() => {
-                                    empat[0].click();
-                                }, 6500);
-                                break;
-                            case 75:
-                                tujuhPuluh();
-                                setTimeout(() => {
-                                    lima[0].click();
-                                }, 6500);
-                                break;
-                            case 76:
-                                tujuhPuluh();
-                                setTimeout(() => {
-                                    enam[0].click();
-                                }, 6500);
-                                break;
-                            case 77:
-                                tujuhPuluh();
-                                setTimeout(() => {
-                                    tujuh[0].click();
-                                }, 6500);
-                                break;
-                            case 78:
-                                tujuhPuluh();
-                                setTimeout(() => {
-                                    delapan[0].click();
-                                }, 6500);
-                                break;
-                            case 79:
-                                tujuhPuluh();
-                                setTimeout(() => {
-                                    sembilan[0].click();
-                                }, 6500);
-                                break;
-                            case 80:
+                            }else if(IdAntrian.current==80){
                                 delapanPuluh();
                                 break;
-                            case 81:
+                            
+                            }else if(IdAntrian.current<=89){
+                                var x = i%80;
+                                console.log("AWDW", x);
                                 delapanPuluh();
                                 setTimeout(() => {
-                                    satu[0].click();
+                                    document.getElementsByName(x)[0].click();
                                 }, 6500);
-                                break;
-                            case 82:
-                                delapanPuluh();
-                                setTimeout(() => {
-                                    dua[0].click();
-                                }, 6500);
-                                break;
-                            case 83:
-                                delapanPuluh();
-                                setTimeout(() => {
-                                    tiga[0].click();
-                                }, 6500);
-                                break;
-                            case 84:
-                                delapanPuluh();
-                                setTimeout(() => {
-                                    empat[0].click();
-                                }, 6500);
-                                break;
-                            case 85:
-                                delapanPuluh();
-                                setTimeout(() => {
-                                    lima[0].click();
-                                }, 6500);
-                                break;
-                            case 86:
-                                delapanPuluh();
-                                setTimeout(() => {
-                                    enam[0].click();
-                                }, 6500);
-                                break;
-                            case 87:
-                                delapanPuluh();
-                                setTimeout(() => {
-                                    tujuh[0].click();
-                                }, 6500);
-                                break;
-                            case 88:
-                                delapanPuluh();
-                                setTimeout(() => {
-                                    delapan[0].click();
-                                }, 6500);
-                                break;
-                            case 89:
-                                delapanPuluh();
-                                setTimeout(() => {
-                                    sembilan[0].click();
-                                }, 6500);
-                                break;
-                            case 90:
+                            }else if(IdAntrian.current==90){
                                 sembilanPuluh();
                                 break;
-                            case 91:
+                            
+                            }else if(IdAntrian.current<=99){
+                                var x = i%90;
+                                console.log("AWDW", x);
                                 sembilanPuluh();
                                 setTimeout(() => {
-                                    satu[0].click();
+                                    document.getElementsByName(x)[0].click();
                                 }, 6500);
-                                break;
-                            case 92:
-                                sembilanPuluh();
-                                setTimeout(() => {
-                                    dua[0].click();
-                                }, 6500);
-                                break;
-                            case 93:
-                                sembilanPuluh();
-                                setTimeout(() => {
-                                    tiga[0].click();
-                                }, 6500);
-                                break;
-                            case 94:
-                                sembilanPuluh();
-                                setTimeout(() => {
-                                    empat[0].click();
-                                }, 6500);
-                                break;
-                            case 95:
-                                sembilanPuluh();
-                                setTimeout(() => {
-                                    lima[0].click();
-                                }, 6500);
-                                break;
-                            case 96:
-                                sembilanPuluh();
-                                setTimeout(() => {
-                                    enam[0].click();
-                                }, 6500);
-                                break;
-                            case 97:
-                                sembilanPuluh();
-                                setTimeout(() => {
-                                    tujuh[0].click();
-                                }, 6500);
-                                break;
-                            case 98:
-                                sembilanPuluh();
-                                setTimeout(() => {
-                                    delapan[0].click();
-                                }, 6500);
-                                break;
-                            case 99:
-                                sembilanPuluh();
-                                setTimeout(() => {
-                                    sembilan[0].click();
-                                }, 6500);
-                                break;
-                            case 100:
+                            }else if(IdAntrian.current==100){
                                 seratusX();
                                 break;
-                            case 101:
-                                seratusX();
-                                setTimeout(() => {
-                                    satu[0].click();
-                                }, 5500);
-                                break;
-                            case 102:
-                                seratusX();
-                                setTimeout(() => {
-                                    dua[0].click();
-                                }, 5500);
-                                break;
-                            case 103:
-                                seratusX();
-                                setTimeout(() => {
-                                    tiga[0].click();
-                                }, 5500);
-                                break;
-                            case 104:
-                                seratusX();
-                                setTimeout(() => {
-                                    empat[0].click();
-                                }, 5500);
-                                break;
-                            case 105:
-                                seratusX();
-                                setTimeout(() => {
-                                    lima[0].click();
-                                }, 5500);
-                                break;
-                            case 106:
-                                seratusX();
-                                setTimeout(() => {
-                                    enam[0].click();
-                                }, 5500);
-                                break;
-                            case 107:
-                                seratusX();
-                                setTimeout(() => {
-                                    tujuh[0].click();
-                                }, 5500);
-                                break;
-                            case 108:
-                                seratusX();
-                                setTimeout(() => {
-                                    delapan[0].click();
-                                }, 5500);
-                                break;
-                            case 109:
-                                seratusX();
-                                setTimeout(() => {
-                                    sembilan[0].click();
-                                }, 5500);
-                                break;
-                            case 110:
-                                seratusX();
-                                setTimeout(() => {
-                                    sepuluh[0].click();
-                                }, 5500);
-                                break;
-                            case 111:
+                            
+                            }else if(IdAntrian.current==111){
                                 seratusX();
                                 setTimeout(() => {
                                     sebelas[0].click();
                                 }, 5500);
                                 break;
-                            case 112:
-                                seratusX();
-                                setTimeout(() => {
-                                    dua[0].click();
-                                    setTimeout(() => {
-                                        belas[0].click();
-                                    }, 1000);
-                                }, 5500);
-                                break;
-                            case 113:
-                                seratusX();
-                                setTimeout(() => {
-                                    tiga[0].click();
-                                    setTimeout(() => {
-                                        belas[0].click();
-                                    }, 1000);
-                                }, 5500);
-                                break;
-                            case 114:
-                                seratusX();
-                                setTimeout(() => {
-                                    empat[0].click();
-                                    setTimeout(() => {
-                                        belas[0].click();
-                                    }, 1000);
-                                }, 5500);
-                                break;
-                            case 115:
-                                seratusX();
-                                setTimeout(() => {
-                                    lima[0].click();
-                                    setTimeout(() => {
-                                        belas[0].click();
-                                    }, 1000);
-                                }, 5500);
-                                break;
-                            case 116:
-                                seratusX();
-                                setTimeout(() => {
-                                    enam[0].click();
-                                    setTimeout(() => {
-                                        belas[0].click();
-                                    }, 1000);
-                                }, 5500);
-                                break;
-                            case 117:
-                                seratusX();
-                                setTimeout(() => {
-                                    tujuh[0].click();
-                                    setTimeout(() => {
-                                        belas[0].click();
-                                    }, 1000);
-                                }, 5500);
-                                break;
-                            case 118:
-                                seratusX();
-                                setTimeout(() => {
-                                    delapan[0].click();
-                                    setTimeout(() => {
-                                        belas[0].click();
-                                    }, 1000);
-                                }, 5500);
-                                break;
-                            case 119:
-                                seratusX();
-                                setTimeout(() => {
-                                    sembilan[0].click();
-                                    setTimeout(() => {
-                                        belas[0].click();
-                                    }, 1000);
-                                }, 5500);
-                                break;
-                            case 120:
+                            }else if(IdAntrian.current==120){
                                 seratusX();
                                 setTimeout(() => {
                                     duaPuluh();
                                 }, 5500);
                                 break;
-                            case 121:
+                            }else if(IdAntrian.current==130){
                                 seratusX();
                                 setTimeout(() => {
-                                    duaPuluh();
-                                    setTimeout(() => {
-                                        satu[0].click();
-                                    }, 1000);
+                                    tigaPuluh();
                                 }, 5500);
                                 break;
-                            default:
+                            }else if(IdAntrian.current==140){
+                                seratusX();
+                                setTimeout(() => {
+                                    empatPuluh();
+                                }, 5500);
                                 break;
+                            }else if(IdAntrian.current==150){
+                                seratusX();
+                                setTimeout(() => {
+                                    limaPuluh();
+                                }, 5500);
+                                break;
+                            }
+                            else if(IdAntrian.current<=199){
+                                var y = Number(String(i).slice(-1));
+                                console.log(y);
+                                if(IdAntrian.current<=110){
+                                    seratusX();
+                                    setTimeout(() => {
+                                        document.getElementsByName(y)[0].click();
+                                    }, 5500);
+                                    break;
+                                }else if(IdAntrian.current<=120){
+                                    seratusX();
+                                    setTimeout(() => {
+                                        duaPuluh();
+                                        setTimeout(() => {
+                                            document.getElementsByName(y)[0].click();
+                                        }, 1000);
+                                    }, 5500);
+                                    break;
+                                }else if(IdAntrian.current<=130){
+                                    seratusX();
+                                    setTimeout(() => {
+                                        tigaPuluh();
+                                        setTimeout(() => {
+                                            document.getElementsByName(y)[0].click();
+                                        }, 1000);
+                                    }, 5500);
+                                    break;
+                                }else if(IdAntrian.current<=140){
+                                    seratusX();
+                                    setTimeout(() => {
+                                        empatPuluh();
+                                        setTimeout(() => {
+                                            document.getElementsByName(y)[0].click();
+                                        }, 1000);
+                                    }, 5500);
+                                    break;
+                                }else if(IdAntrian.current<=150){
+                                    seratusX();
+                                    setTimeout(() => {
+                                        limaPuluh();
+                                        setTimeout(() => {
+                                            document.getElementsByName(y)[0].click();
+                                        }, 1000);
+                                    }, 5500);
+                                    break;
+                                }
+                                
+                            }
+
+                        }
                         
                     }
+                    
                     if(IdAntrian.current <= 11){
                         theEnd();
                     }else if(IdAntrian.current <= 20 || IdAntrian.current == 30 || IdAntrian.current == 40 || IdAntrian.current == 50 || IdAntrian.current == 60 || IdAntrian.current == 70 || IdAntrian.current == 80 || IdAntrian.current == 90 || IdAntrian.current == 100){
@@ -1017,29 +477,394 @@ function Antrian() {
                 }
     }
 
+    function soundAntrianKasir(id){
+        var kasir = document.getElementsByName("kasir");
+        var satu = document.getElementsByName("1");
+        var dua = document.getElementsByName("2");
+        var tiga = document.getElementsByName("3");
+        var empat = document.getElementsByName("4");
+        var lima = document.getElementsByName("5");
+        var enam = document.getElementsByName("6");
+        var tujuh = document.getElementsByName("7");
+        var delapan = document.getElementsByName("8");
+        var sembilan = document.getElementsByName("9");
+        var puluh = document.getElementsByName("puluh");
+        var ratus = document.getElementsByName("ratus");
+        var ribu = document.getElementsByName("ribu");
+        var sebelas = document.getElementsByName("sebelas");
+        var sepuluh = document.getElementsByName("10");
+        var seratus = document.getElementsByName("seratus");
+        var belas = document.getElementsByName("belas");
+        var bellFirst = document.getElementsByName("bellFirst");
+        var bellSecond = document.getElementsByName("bellSecond");
+        var nomorUrut = document.getElementsByName("nomorUrut");
+        // satu[0].click();
+            function beginning(){
+                // silahkan[0].play();
+                bellFirst[0].click();
+                setTimeout(() => {
+                    nomorUrut[0].click();
+                }, 3250);
+            }
+            function theEnd(){
+                console.log("The end1");
+                // silahkan[0].play();
+                setTimeout(() => {
+                    kasir[0].click();
+                    setTimeout(() => {
+                        bellSecond[0].click();
+                    }, 2250);
+                }, 5500);
+            }
+            function theEnd2(){
+                console.log("The end2");
+                // silahkan[0].play();
+                setTimeout(() => {
+                    kasir[0].click();
+                    setTimeout(() => {
+                        bellSecond[0].click();
+                    }, 2250);
+                }, 6500);
+            }
+            function theEnd3(){
+                console.log("The end3");
+                setTimeout(() => {
+                    kasir[0].click();
+                    setTimeout(() => {
+                        bellSecond[0].click();
+                    }, 2250);
+                }, 7500);
+            }
+            function theEnd4(){
+                console.log("The end4");
+                setTimeout(() => {
+                    kasir[0].click();
+                    setTimeout(() => {
+                        bellSecond[0].click();
+                    }, 2250);
+                }, 8500);
+            }
+            function theEnd5(){
+                console.log("The end5");
+                setTimeout(() => {
+                    kasir[0].click();
+                    setTimeout(() => {
+                        bellSecond[0].click();
+                    }, 2250);
+                }, 7500);
+            }
+    
+            function duaPuluh(){
+                setTimeout(() => {
+                    dua[0].click();
+                    setTimeout(() => {
+                        puluh[0].click();
+                    }, 1000);
+                }, 4500);
+            }
+            function tigaPuluh(){
+                setTimeout(() => {
+                    tiga[0].click();
+                    setTimeout(() => {
+                        puluh[0].click();
+                    }, 1000);
+                }, 4500);
+            }
+            function empatPuluh(){
+                setTimeout(() => {
+                    empat[0].click();
+                    setTimeout(() => {
+                        puluh[0].click();
+                    }, 1000);
+                }, 4500);
+            }   
+            function limaPuluh(){
+                setTimeout(() => {
+                    lima[0].click();
+                    setTimeout(() => {
+                        puluh[0].click();
+                    }, 1000);
+                }, 4500);
+            }
+            function enamPuluh(){
+                setTimeout(() => {
+                    enam[0].click();
+                    setTimeout(() => {
+                        puluh[0].click();
+                    }, 1000);
+                }, 4500);
+            }
+            function tujuhPuluh(){
+                setTimeout(() => {
+                    tujuh[0].click();
+                    setTimeout(() => {
+                        puluh[0].click();
+                    }, 1000);
+                }, 4500);
+            }
+            function delapanPuluh(){
+                setTimeout(() => {
+                    delapan[0].click();
+                    setTimeout(() => {
+                        puluh[0].click();
+                    }, 1000);
+                }, 4500);
+            }
+            function sembilanPuluh(){
+                setTimeout(() => {
+                    sembilan[0].click();
+                    setTimeout(() => {
+                        puluh[0].click();
+                    }, 1000);
+                }, 4500);
+            }
+            function seratusX(){
+                setTimeout(() => {
+                    seratus[0].click();
+                }, 4500);
+            }
+    
+    
+            // kasir[0].click();
+            // x.items().next().value[1].click();
+            // x.keys().next().value[1].click();
+            // x.values().next().value[1].click();
+            // console.log(x);
+                // IdChecker = dataAntrian.id;
+                beginning();
+                if (IdAntrianKasir.current !== 0){
+                    for(let i=1; i < IdAntrianKasir.current+1; i++){
+                        if(i==IdAntrianKasir.current){
+                            if(IdAntrianKasir.current<=10){
+                                setTimeout(() => {
+                                    document.getElementsByName(i)[0].click();
+                                }, 4500);
+                                break;
+                            }else if(IdAntrianKasir.current==11){
+                                setTimeout(() => {
+                                    sebelas[0].click();
+                                }, 4500);
+                                break;
+    
+                            }else if(IdAntrianKasir.current<=19){
+                                setTimeout(() => {
+                                    var x = i%10;
+                                    document.getElementsByName(x)[0].click();
+                                    setTimeout(()=> {
+                                        belas[0].click();
+                                    }, 1000);
+                                }, 4500);
+                                break;
+                            }else if(IdAntrianKasir.current==20){
+                                duaPuluh();
+                                break;
+                       
+                            }else if(IdAntrianKasir.current<=29){
+                                var x = i%20;
+                                console.log("AWDW", x);
+                                duaPuluh();
+                                setTimeout(() => {
+                                    document.getElementsByName(x)[0].click();
+                                }, 6500);
+                                break;
+                            }else if(IdAntrianKasir.current==30){
+                                tigaPuluh();
+                                break;
+                            
+                            }else if(IdAntrianKasir.current<=39){
+                                var x = i%30;
+                                console.log("AWDW", x);
+                                tigaPuluh();
+                                setTimeout(() => {
+                                    document.getElementsByName(x)[0].click();
+                                }, 6500);
+                                break;
+                            }else if(IdAntrianKasir.current==40){
+                                empatPuluh();
+                                break;
+                            
+                            }else if(IdAntrianKasir.current<=49){
+                                var x = i%40;
+                                console.log("AWDW", x);
+                                empatPuluh();
+                                setTimeout(() => {
+                                    document.getElementsByName(x)[0].click();
+                                }, 6500);
+                                break;
+                            }else if(IdAntrianKasir.current==50){
+                                limaPuluh();
+                                break;
+                            
+                            }else if(IdAntrianKasir.current<=59){
+                                var x = i%50;
+                                console.log("AWDW", x);
+                                limaPuluh();
+                                setTimeout(() => {
+                                    document.getElementsByName(x)[0].click();
+                                }, 6500);
+                                break;
+                            }else if(IdAntrianKasir.current==60){
+                                enamPuluh();
+                                break;
+                            
+                            }else if(IdAntrianKasir.current<=69){
+                                var x = i%60;
+                                console.log("AWDW", x);
+                                enamPuluh();
+                                setTimeout(() => {
+                                    document.getElementsByName(x)[0].click();
+                                }, 6500);
+                                break;
+                            }else if(IdAntrianKasir.current==70){
+                                tujuhPuluh();
+                                break;
+                            
+                            }else if(IdAntrianKasir.current<=79){
+                                var x = i%70;
+                                console.log("AWDW", x);
+                                tujuhPuluh();
+                                setTimeout(() => {
+                                    document.getElementsByName(x)[0].click();
+                                }, 6500);
+                                break;
+                            }else if(IdAntrianKasir.current==80){
+                                delapanPuluh();
+                                break;
+                            
+                            }else if(IdAntrianKasir.current<=89){
+                                var x = i%80;
+                                console.log("AWDW", x);
+                                delapanPuluh();
+                                setTimeout(() => {
+                                    document.getElementsByName(x)[0].click();
+                                }, 6500);
+                            }else if(IdAntrianKasir.current==90){
+                                sembilanPuluh();
+                                break;
+                            
+                            }else if(IdAntrianKasir.current<=99){
+                                var x = i%90;
+                                console.log("AWDW", x);
+                                sembilanPuluh();
+                                setTimeout(() => {
+                                    document.getElementsByName(x)[0].click();
+                                }, 6500);
+                            }else if(IdAntrianKasir.current==100){
+                                seratusX();
+                                break;
+                            
+                            }else if(IdAntrianKasir.current==111){
+                                seratusX();
+                                setTimeout(() => {
+                                    sebelas[0].click();
+                                }, 5500);
+                                break;
+                            }else if(IdAntrianKasir.current==120){
+                                seratusX();
+                                setTimeout(() => {
+                                    duaPuluh();
+                                }, 5500);
+                                break;
+                            }else if(IdAntrianKasir.current==130){
+                                seratusX();
+                                setTimeout(() => {
+                                    tigaPuluh();
+                                }, 5500);
+                                break;
+                            }else if(IdAntrianKasir.current==140){
+                                seratusX();
+                                setTimeout(() => {
+                                    empatPuluh();
+                                }, 5500);
+                                break;
+                            }else if(IdAntrianKasir.current==150){
+                                seratusX();
+                                setTimeout(() => {
+                                    limaPuluh();
+                                }, 5500);
+                                break;
+                            }
+                            else if(IdAntrianKasir.current<=199){
+                                var y = Number(String(i).slice(-1));
+                                console.log(y);
+                                if(IdAntrianKasir.current<=110){
+                                    seratusX();
+                                    setTimeout(() => {
+                                        document.getElementsByName(y)[0].click();
+                                    }, 5500);
+                                    break;
+                                }else if(IdAntrianKasir.current<=120){
+                                    seratusX();
+                                    setTimeout(() => {
+                                        duaPuluh();
+                                        setTimeout(() => {
+                                            document.getElementsByName(y)[0].click();
+                                        }, 1000);
+                                    }, 5500);
+                                    break;
+                                }else if(IdAntrianKasir.current<=130){
+                                    seratusX();
+                                    setTimeout(() => {
+                                        tigaPuluh();
+                                        setTimeout(() => {
+                                            document.getElementsByName(y)[0].click();
+                                        }, 1000);
+                                    }, 5500);
+                                    break;
+                                }else if(IdAntrianKasir.current<=140){
+                                    seratusX();
+                                    setTimeout(() => {
+                                        empatPuluh();
+                                        setTimeout(() => {
+                                            document.getElementsByName(y)[0].click();
+                                        }, 1000);
+                                    }, 5500);
+                                    break;
+                                }else if(IdAntrianKasir.current<=150){
+                                    seratusX();
+                                    setTimeout(() => {
+                                        limaPuluh();
+                                        setTimeout(() => {
+                                            document.getElementsByName(y)[0].click();
+                                        }, 1000);
+                                    }, 5500);
+                                    break;
+                                }
+                                
+                            }
+    
+                        }
+                        
+                    }
+                    
+                    if(IdAntrianKasir.current <= 11){
+                        theEnd();
+                    }else if(IdAntrianKasir.current <= 20 || IdAntrianKasir.current == 30 || IdAntrianKasir.current == 40 || IdAntrianKasir.current == 50 || IdAntrianKasir.current == 60 || IdAntrianKasir.current == 70 || IdAntrianKasir.current == 80 || IdAntrianKasir.current == 90 || IdAntrianKasir.current == 100){
+                        theEnd2();
+                    }else if(IdAntrianKasir.current <= 111){
+                        theEnd3();
+                    }else if(IdAntrianKasir.current == 120 || IdAntrianKasir.current == 130 || IdAntrianKasir.current == 140 || IdAntrianKasir.current == 150 || IdAntrianKasir.current == 160 || IdAntrianKasir.current == 170 || IdAntrianKasir.current == 180 || IdAntrianKasir.current == 190){
+                        theEnd4();
+                    }else if(IdAntrianKasir.current <= 199){
+                        theEnd5();
+                    }
+                }
+    }
+
     useEffect(() => {
         const interval = setInterval(() => {
             
-            // console.log(day)
-            // console.log(moment().format('hh:mm:ss'));
             setTime(moment().format('hh:mm:ss'));
             console.log(IdChecker, IdAntrian.current)
             if(IdAntrian.current !== IdChecker.current){
                 IdChecker.current = IdAntrian.current;
                 soundAntrian(IdAntrian.current);
             }
-            // dispa
-            // async function fetchCurrAntrianPerawat() {
-            //     const response = await fetch("http://localhost:3001/perawat/getLastCalledAntrian");
-            //     console.log(response);
-            //     const data = await response.json();
-            //     console.log(data);
-            //     return data;
-            // }
-            // fetchCurrAntrianPerawat().then((data) => {
-            //     if(data.id > dat)
-            // perawat.apply(this, audoClips);
-            
+
+            if(IdAntrianKasir.current !== IdCheckerKasir.current){
+                IdCheckerKasir.current = IdAntrianKasir.current;
+                soundAntrianKasir(IdAntrianKasir.current);
+            }
         }, 1000);
         return () => clearInterval(interval);
     }, []);
@@ -1133,10 +958,15 @@ function Antrian() {
                     existence: 0
                 });
                 console.log(dataAntrianKasir);
+                IdCheckerKasir.current = 0;
+                IdAntrianKasir.current = 0;
                 setLoading(false);
                 return;
             }else{
                 setDataAntrianKasir(data[0]);
+                IdCheckerKasir.current = data[0].id;
+                // setIdAntrian(data[0].id);
+                IdAntrianKasir.current = data[0].id;
                 setLoading(false);
                 return;
             }
@@ -1162,12 +992,23 @@ function Antrian() {
             IdAntrian.current = data.id;
         });
 
-        socket.on("kasir:receiveToUpdateAntrian" , (data) => {
-            console.log("kasir:receiveToUpdateAntrian");
-            window.location.reload();
-        });
+        
         return () => {
             socket.off("receiveToUpdateAntrian");
+        }
+    }, []);
+
+    useEffect(() => {
+        socket.on("kasir:receiveToUpdateAntrian" , (data) => {
+            console.log("kasir:receiveToUpdateAntrian");
+            console.log(data);
+            setDataAntrianKasir(data);
+            dataAntrianKasir.id = data.id;
+            // setIdAntrian(data.id);
+            IdAntrianKasir.current = data.id;
+        });
+
+        return () => {
             socket.off("kasir:receiveToUpdateAntrian");
         }
     }, []);
@@ -1185,6 +1026,19 @@ function Antrian() {
             socket.off("receiveUlangiPanggilan");
         }
     }, []);
+    useEffect(() => {
+        socket.on("kasir:receiveUlangiPanggilan", (data) => {
+            console.log("kasir:receiveUlangiPanggilan");
+            console.log(data);
+            if(data.id === dataAntrianKasir.id){
+                console.log("id sama");
+                soundAntrianKasir()
+            }
+            });
+        return () => {
+            socket.off("receiveUlangiPanggilan");
+        }
+    }, []);
 
 
 
@@ -1194,18 +1048,18 @@ function Antrian() {
 
         return (
             <div className="audioPanggilan">
-                <button id="sekarang" name="sekarang" className="buttonhidden" onClick={sekarang}>Sekarang</button>
+                <button id="kasir" name="kasir" className="buttonhidden" onClick={kasir}>Kasir</button>
                 <button id="perawat" name="perawat" className="buttonhidden" onClick={perawat}>Perawat</button>
-                <button id="satu" name="satu" className="buttonhidden" onClick={satu}>satu</button>
-                <button id="dua" name="dua" className="buttonhidden" onClick={dua}>dua</button>
-                <button id="tiga" name="tiga" className="buttonhidden" onClick={tiga}>tiga</button>
-                <button id="empat" name="empat" className="buttonhidden" onClick={empat}>empat</button>
-                <button id="lima" name="lima" className="buttonhidden" onClick={lima}>lima</button>
-                <button id="enam" name="enam" className="buttonhidden" onClick={enam}>enam</button>
-                <button id="tujuh" name="tujuh" className="buttonhidden" onClick={tujuh}>tujuh</button>
-                <button id="delapan" name="delapan" className="buttonhidden" onClick={delapan}>delapan</button>
-                <button id="sembilan" name="sembilan" className="buttonhidden" onClick={sembilan}>sembilan</button>
-                <button id="sepuluh" name="sepuluh" className="buttonhidden" onClick={sepuluh}>sepuluh</button>
+                <button id="1" name="1" className="buttonhidden" onClick={satu}>satu</button>
+                <button id="2" name="2" className="buttonhidden" onClick={dua}>dua</button>
+                <button id="3" name="3" className="buttonhidden" onClick={tiga}>tiga</button>
+                <button id="4" name="4" className="buttonhidden" onClick={empat}>empat</button>
+                <button id="5" name="5" className="buttonhidden" onClick={lima}>lima</button>
+                <button id="6" name="6" className="buttonhidden" onClick={enam}>enam</button>
+                <button id="7" name="7" className="buttonhidden" onClick={tujuh}>tujuh</button>
+                <button id="8" name="8" className="buttonhidden" onClick={delapan}>delapan</button>
+                <button id="9" name="9" className="buttonhidden" onClick={sembilan}>sembilan</button>
+                <button id="10" name="10" className="buttonhidden" onClick={sepuluh}>sepuluh</button>
                 <button id="sebelas" name="sebelas" className="buttonhidden" onClick={sebelas}>sebelas</button>
                 <button id="puluh" name="puluh" className="buttonhidden" onClick={puluh}>puluh</button>
                 <button id="belas" name="belas" className="buttonhidden" onClick={belas}>belas</button>
@@ -1307,7 +1161,7 @@ function Antrian() {
                     <audio id="belas" src="<?= base_url(); ?>/assets/audio/new/belas.MP3"></audio>
                     <audio id="sebelas" src="<?= base_url(); ?>/assets/audio/new/sebelas.MP3"></audio>
                     <audio id="puluh" src="<?= base_url(); ?>/assets/audio/new/puluh.MP3"></audio>
-                    <audio id="sepuluh" src="<?= base_url(); ?>/assets/audio/new/sepuluh.MP3"></audio>
+                    <audio id="10" src="<?= base_url(); ?>/assets/audio/new/sepuluh.MP3"></audio>
                     <audio id="ratus" src="<?= base_url(); ?>/assets/audio/new/ratus.MP3"></audio>
                     <audio id="seratus" src="<?= base_url(); ?>/assets/audio/new/seratus.MP3"></audio>
                     <audio id="suarabelloket1" src="<?= base_url(); ?>/assets/audio/new/1.MP3"></audio>
