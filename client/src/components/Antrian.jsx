@@ -4,7 +4,6 @@ import moment from 'moment';
 import io from "socket.io-client";
 import '../style/Antrian.css';
 import '../style/bootstrap/jumbotron-narrow-monitoring.css';
-import {Howl, Howler} from 'howler';
 import useSound from 'use-sound';
 
 import satuSound from '../assets/audio/new/1.MP3';

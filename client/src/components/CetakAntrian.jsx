@@ -1,6 +1,7 @@
 import { hasSelectionSupport } from "@testing-library/user-event/dist/utils";
 import React, { useState, useEffect } from "react"
-import { useCallback } from "react";
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 import io from "socket.io-client";
 import '../style/CetakAntrian.css';
 
@@ -11,6 +12,7 @@ const socket = io.connect("http://localhost:3001/", {
 });
 function CetakAntrian(){
     const [loading, setLoading] = useState(true);
+    const CetakSwal = withReactContent(Swal);
     
         const [dataAntrian, setDataAntrian] = useState({
             id: "",
@@ -81,11 +83,22 @@ function CetakAntrian(){
                             lastId: lastId,
                             message: "testestes"
                         })
-                    }).then((response) => response.json())
-                    .then((data) => {
-                        console.log(data);
-                        return;
-                    });
+                    }).then((response) => {
+                        console.log("MASUK MAS");
+                        let dataNow = data[0].id+1
+                        CetakSwal.fire({
+                            position: "center",
+                            title: "NOMOR ANTRIAN ANDA " + dataNow,
+                            text: "Antrian berhasil dicetak",
+                            icon: "success",
+                            confirmButtonText: "OK",
+                            timer: 1500,
+                        });
+
+                        //cetak_antrian
+                        window.open("http://localhost:3001/antrian/cetak_antrian/" + dataNow, "_blank");
+                        return response.json();
+                    })
                 });
                 
             }catch(err){

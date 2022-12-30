@@ -7,7 +7,7 @@ const { Server } = require('socket.io');
 const cors = require('cors');
 
 const mysql = require('mysql');
-const MySQLEvents = require('@rodrigogs/mysql-events');
+
 const {database} = require('./config/helpers');
 const { query } = require('express');
 const { callbackify } = require('util');

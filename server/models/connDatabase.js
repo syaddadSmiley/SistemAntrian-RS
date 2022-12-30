@@ -5,7 +5,7 @@ const db = mysql.createPool({
     host: 'localhost',
     user: 'root',
     password: '',
-    database: 'test-socket'
+    database: 'socketnode'
 });
 
 exports.db = db;

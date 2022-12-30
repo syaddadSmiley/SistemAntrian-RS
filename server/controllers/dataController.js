@@ -96,9 +96,107 @@ const addAntrian = async (req, res, next) => {
     }
 };
 
+/**
+*
+*  JavaScript string pad
+*  http://www.webtoolkit.info/
+*
+**/
+
+var STR_PAD_LEFT = 1;
+var STR_PAD_RIGHT = 2;
+var STR_PAD_BOTH = 3;
+
+function pad(str, len, pad, dir) {
+
+    if (typeof(len) == "undefined") { var len = 0; }
+    if (typeof(pad) == "undefined") { var pad = ' '; }
+    if (typeof(dir) == "undefined") { var dir = STR_PAD_RIGHT; }
+
+    if (len + 1 >= str.length) {
+
+        switch (dir){
+
+            case STR_PAD_LEFT:
+                str = Array(len + 1 - str.length).join(pad) + str;
+            break;
+
+            case STR_PAD_BOTH:
+                var padlen = len - str.length;
+                var right = Math.ceil( padlen / 2 );
+                var left = padlen - right;
+                str = Array(left+1).join(pad) + str + Array(right+1).join(pad);
+            break;
+
+            default:
+                str = str + Array(len + 1 - str.length).join(pad);
+            break;
+
+        } // switch
+
+    }
+
+    return str;
+}
+
+const getCetakAntrian = async (req, res, next) => {
+    try {
+        let tmp = new Date().getTime('siHdm');
+        var today = new Date();
+        var date = today.getFullYear() + '-' + ('0' + (today.getMonth() + 1)).slice(-2) + '-' + ('0' + today.getDate()).slice(-2);
+        var time = today.getHours() + ":" + today.getMinutes();
+        var dateTime = date + ' ' + time;
+
+        const reqParamId = req.params.id;
+        const reqParamLoket = req.params.loket;
+        // const glbData = `
+        // ${String.fromCharCode(27), String.fromCharCode(97), String.fromCharCode(1)}
+        // ${pad('RS Awal Bros Pekanbaru', 35, " ", STR_PAD_BOTH), pad('',1," ", STR_PAD_RIGHT), "\n"}
+        // ${pad(tgl, 35, " ", STR_PAD_BOTH), pad('',1," ", STR_PAD_RIGHT), "\n"}
+        // ${pad('Antrian '+reqParamLoket+' Zona 2', 35, " ", STR_PAD_BOTH), pad('',1," ", STR_PAD_RIGHT), "\n"}
+        // ${String.fromCharCode(27), String.fromCharCode(33), String.fromCharCode(48)}
+        // ${String.fromCharCode(27), String.fromCharCode(69), String.fromCharCode(1)}
+        // ${pad('No. Antrian', 35, " ", STR_PAD_BOTH), pad('',1," ", STR_PAD_RIGHT), "\n"}
+        // ${String.fromCharCode(27), String.fromCharCode(69), String.fromCharCode(0)}
+        // ${String.fromCharCode(27), String.fromCharCode(33), String.fromCharCode(32)}
+        // ${pad(reqParamId, 35, " ", STR_PAD_BOTH), pad('',1," ", STR_PAD_RIGHT), "\n"}
+        // ${String.fromCharCode(27), String.fromCharCode(33), String.fromCharCode(0)}
+        // ${pad('Silahkan Menunggu Antriannya', 35, " ", STR_PAD_BOTH), pad('',1," ", STR_PAD_RIGHT), "\n"}
+        // ${pad('Terima Kasih', 35, " ", STR_PAD_BOTH), pad('',1," ", STR_PAD_RIGHT), "\n"}
+        // `
+        let glbData = ""
+        glbData += String.fromCharCode(27) + String.fromCharCode(97) + String.fromCharCode(1)
+        glbData += pad('RS Awal Bros Pekanbaru', 35, " ", STR_PAD_BOTH), "\n", pad('',1," ", STR_PAD_RIGHT)+ "\n"
+        glbData += pad(dateTime, 35, " ", STR_PAD_BOTH), pad('',1," ", STR_PAD_RIGHT)+ "\n"
+        glbData += pad('Antrian '+reqParamLoket+' Zona 2', 35, " ", STR_PAD_BOTH), pad('',1," ", STR_PAD_RIGHT)+ "\n"
+        glbData += String.fromCharCode(27), String.fromCharCode(33), String.fromCharCode(48)
+        glbData += String.fromCharCode(27), String.fromCharCode(69), String.fromCharCode(1)
+        glbData += pad('No. Antrian', 35, " ", STR_PAD_BOTH), pad('',1," ", STR_PAD_RIGHT)+ "\n"
+        glbData += String.fromCharCode(27), String.fromCharCode(69), String.fromCharCode(0)
+        glbData += String.fromCharCode(27), String.fromCharCode(33), String.fromCharCode(32)
+        glbData += pad(reqParamId, 35, " ", STR_PAD_BOTH), pad('',1," ", STR_PAD_RIGHT)+ "\n"
+        glbData += String.fromCharCode(27), String.fromCharCode(33), String.fromCharCode(0)
+        glbData += pad('Silahkan Menunggu Antriannya', 35, " ", STR_PAD_BOTH), pad('',1," ", STR_PAD_RIGHT)+ "\n"
+        glbData += pad('Terima Kasih', 35, " ", STR_PAD_BOTH), pad('',1," ", STR_PAD_RIGHT)+ "\n"
+
+        console.log(glbData);
+        await res.writeHead(200, {
+            'Content-Type': 'application/x-download',
+            'Content-Disposition': 'inline; filename=antrian' + tmp + '.glb',
+            'Cache-Control': 'private, max-age=0, must-revalidate',
+            'Pragma': 'public',
+        });
+        res.end(glbData);
+    } catch (error) {
+        console.log(error);
+        return;
+    }
+};
+
 module.exports = {
     getLastCalledAntrian,
     getLastAntrian,
     addAntrian,
+    getCetakAntrian,
 }
 // Path: server\routes\dataAntrian.js
