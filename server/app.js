@@ -7,7 +7,7 @@ const { Server } = require('socket.io');
 const cors = require('cors');
 
 const mysql = require('mysql');
-const MySQLEvents = require('@rodrigogs/mysql-events');
+
 const {database} = require('./config/helpers');
 const { query } = require('express');
 const { callbackify } = require('util');
@@ -61,8 +61,8 @@ io.on("connection", (socket) => {
             var connection = mysql.createConnection({
                 host: 'localhost',
                 user: 'root',
-                password: 'basement',
-                database: 'socketnode'
+                password: '',
+                database: 'test-socket'
             });
             console.log("QUERYY : ",query);
             connection.query(query, function (error, results, fields) {
@@ -301,6 +301,16 @@ io.on("connection", (socket) => {
 
     socket.on("askToUpdateAntrian", (data) => {
         socket.broadcast.emit("receiveToUpdateAntrian", data);
+    });
+    socket.on("kasir:askToUpdateAntrian", (data) => {
+        socket.broadcast.emit("kasir:receiveToUpdateAntrian", data);
+    });
+
+    socket.on("sendUlangiPanggilan", (data) => {
+        socket.broadcast.emit("receiveUlangiPanggilan", data);
+    });
+    socket.on("kasir:sendUlangiPanggilan", (data) => {
+        socket.broadcast.emit("kasir:receiveUlangiPanggilan", data);
     });
 
         

@@ -49,6 +49,10 @@ function DashboardKasir(){
         socket.emit("askDataClient", {table: "data_client", message: "dari dashboard"});
     };
 
+    const ulangiPanggilan = () =>{
+        socket.emit("kasir:sendUlangiPanggilan", {id: dataAntrian.id, id_da: dataAntrian.id_da, counter: dataAntrian.counter, waktu: dataAntrian.waktu, status: dataAntrian.status, waktu_panggil: dataAntrian.waktu_panggil, existence: dataAntrian.existence});
+    }
+
     const getNextAntrian = async () => {
         console.log(dataAntrian.id);
         // console.log(loket);
@@ -108,6 +112,7 @@ function DashboardKasir(){
             });
             console.log(dataRes);
             setDataAntrian(dataRes);
+            socket.emit("kasir:askToUpdateAntrian", {id:dataRes.id, id_da:dataRes.id_da, counter:dataRes.counter, waktu:dataRes.waktu, status:dataRes.status, waktu_panggil:dataRes.waktu_panggil, existence:dataRes.existence});
         }
         
         console.log(data);
@@ -241,7 +246,7 @@ function DashboardKasir(){
                         </div>
                         <div className="container">
                             <div className="col-md-10">
-                                <button className="btn btn-small btn-primary try_queue" type="button" style={{fontSize: '30px', fontWeight: 'bold'}}>
+                                <button className="btn btn-small btn-primary try_queue" type="button" onClick={ulangiPanggilan} style={{fontSize: '30px', fontWeight: 'bold'}}>
                                     Ulangi Panggilan &nbsp;<span className=" fa fa-volume-up"></span>
                                 </button>
                                 {/* <button onClick={changeNoExistence()} className="btn btn-small btn-primary tidak" type="button" style={{fontSize: '30px', fontWeight: 'bold'}}>

@@ -1,7 +1,9 @@
 import { hasSelectionSupport } from "@testing-library/user-event/dist/utils";
 import React, { useState, useEffect } from "react"
-import { useCallback } from "react";
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 import io from "socket.io-client";
+import moment from 'moment';
 import '../style/CetakAntrian.css';
 
 const socket = io.connect("http://localhost:3001/", {
@@ -11,6 +13,7 @@ const socket = io.connect("http://localhost:3001/", {
 });
 function CetakAntrian(){
     const [loading, setLoading] = useState(true);
+    const CetakSwal = withReactContent(Swal);
     
         const [dataAntrian, setDataAntrian] = useState({
             id: "",
@@ -81,11 +84,22 @@ function CetakAntrian(){
                             lastId: lastId,
                             message: "testestes"
                         })
-                    }).then((response) => response.json())
-                    .then((data) => {
-                        console.log(data);
-                        return;
-                    });
+                    }).then((response) => {
+                        console.log("MASUK MAS");
+                        let dataNow = data[0].id+1
+                        CetakSwal.fire({
+                            position: "center",
+                            title: "NOMOR ANTRIAN ANDA " + dataNow,
+                            text: "Antrian berhasil dicetak",
+                            icon: "success",
+                            confirmButtonText: "OK",
+                            timer: 1500,
+                        });
+
+                        //cetak_antrian
+                        window.open("http://localhost:3001/antrian/cetak_antrian/" + dataNow, "_blank");
+                        return response.json();
+                    })
                 });
                 
             }catch(err){
@@ -93,8 +107,42 @@ function CetakAntrian(){
             }
 
         }
+    var [day, setDay] = useState();
+    var [time, setTime] = useState();
+    useEffect(() => {
+        const interval = setInterval(() => {
+            //local time
+            setTime(moment().format('LTS').replace(/AM/g, "AM ").replace(/PM/g, "PM "));
+        }, 1000);
+        return () => clearInterval(interval);
+    }, []);
+    
 
         useEffect(() => {
+            async function getDay() {
+                var dateGD = new Date();
+                // var dayGD = dateGD.toLocaleString('id', {  weekday: 'long' }); //Langsung jadi Hari lho
+                var dayInt = dateGD.getDay();
+                if (dayInt == 0) {
+                    return "Minggu";
+                } else if (dayInt == 1) {
+                    return "Senin";
+                } else if (dayInt == 2) {
+                    return "Selasa";
+                } else if (dayInt == 3) {
+                    return "Rabu";
+                } else if (dayInt == 4) {
+                    return "Kamis";
+                } else if (dayInt == 5) {
+                    return "Jumat";
+                } else if (dayInt == 6) {
+                    return "Sabtu";
+                }
+            }
+            getDay().then((dayx) => {
+                console.log(dayx);
+                setDay(dayx);
+            });
             setLoading(true);
             async function fetchData(){
                 const response = await fetch("http://localhost:3001/antrian/getLastAntrian");
@@ -132,8 +180,8 @@ function CetakAntrian(){
                        <div className="brand-title"><center>Antrian Skrining Perawat Zona 2</center></div>
                     </div>
                     <div className="float-right" style={{marginRight: '25px', marginTop: '20px'}}>
-                     <span className="brand-title" id="clock"> WIB</span><br />
-                        <span className="brand-title">Hari</span>
+                     <span className="brand-title" id="clock">{time} WIB</span><br />
+                        <span className="brand-title">{day}</span>
                     </div>
                 </div>
                 <hr className="style-one" />
@@ -155,6 +203,9 @@ function CetakAntrian(){
                     
             </div>
         </div>
+            <div className="footer">
+                <marquee behaviour="alternate"><p>RS Awal Bros Pekanbaru - Semoga Lekas Sembuh</p></marquee>
+            </div>
     </div>
     )
 }
