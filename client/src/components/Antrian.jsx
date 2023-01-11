@@ -102,7 +102,11 @@ function Antrian() {
     const [nomorUrut] = useSound(nomorUrutSound);
     const [satuAngka] = useSound(satuSound);
 
+    // let [isPlaying, setIsPlaying] = useState(false);
+    let isPlaying = useRef(0);
+
     function soundAntrian(id){
+        
         var perawat = document.getElementsByName("perawat");
             var satu = document.getElementsByName("1");
             var dua = document.getElementsByName("2");
@@ -116,9 +120,9 @@ function Antrian() {
             var puluh = document.getElementsByName("puluh");
             var ratus = document.getElementsByName("ratus");
             var ribu = document.getElementsByName("ribu");
-            var sebelas = document.getElementsByName("sebelas");
+            var sebelas = document.getElementsByName("11");
             var sepuluh = document.getElementsByName("10");
-            var seratus = document.getElementsByName("seratus");
+            var seratus = document.getElementsByName("100");
             var belas = document.getElementsByName("belas");
             var bellFirst = document.getElementsByName("bellFirst");
             var bellSecond = document.getElementsByName("bellSecond");
@@ -126,6 +130,11 @@ function Antrian() {
             // satu[0].click();
             function beginning(){
                 // silahkan[0].play();
+                isPlaying.current = 1;
+                console.log("APAKAH BENAR", isPlaying);
+                for(var i = 0; document.getElementsByClassName('buttonhidden').length > i; i++){
+                    document.getElementsByClassName('buttonhidden')[i].disabled = false;
+                }
                 bellFirst[0].click();
                 setTimeout(() => {
                     nomorUrut[0].click();
@@ -133,22 +142,40 @@ function Antrian() {
             }
             function theEnd(){
                 console.log("The end1");
-                // silahkan[0].play();
-                setTimeout(() => {
-                    perawat[0].click();
                     setTimeout(() => {
-                        bellSecond[0].click();
-                    }, 2250);
-                }, 5500);
+                        perawat[0].click();
+                        setTimeout(() => {
+                            bellSecond[0].click();
+                        }, 2250);
+                        setTimeout(() => {
+                            // console.log("The end1_1", array_perawat.indexOf(id));
+                        if (array_perawat.indexOf(id) !== -1) {
+                            array_perawat.splice(array_perawat.indexOf(id), 1);
+                            // console.log(array_perawat, "OMG")
+                        }
+                            // setIsPlaying(false);
+                            // isPlaying = false;
+                            isPlaying.current = 0;
+                        }, 3250);
+                    }, 5500);
             }
             function theEnd2(){
                 console.log("The end2");
-                // silahkan[0].play();
                 setTimeout(() => {
                     perawat[0].click();
                     setTimeout(() => {
                         bellSecond[0].click();
                     }, 2250);
+                    setTimeout(() => {
+                        console.log("The end1_1", array_perawat.indexOf(id));
+                        if (array_perawat.indexOf(id) !== -1) {
+                            array_perawat.splice(array_perawat.indexOf(id), 1);
+                            console.log(array_perawat, "OMG")
+                        }
+                        // setIsPlaying(false);
+                        // isPlaying = false;
+                        isPlaying.current = 0;
+                    }, 3250);
                 }, 6500);
             }
             function theEnd3(){
@@ -158,6 +185,16 @@ function Antrian() {
                     setTimeout(() => {
                         bellSecond[0].click();
                     }, 2250);
+                    setTimeout(() => {
+                        console.log("The end1_1");
+                        if (array_perawat.indexOf(id) !== -1) {
+                            array_perawat.splice(array_perawat.indexOf(id), 1);
+                            // console.log(array_perawat, "OMG")
+                        }
+                        // setIsPlaying(false);
+                        // isPlaying = false;
+                        isPlaying.current = 0;
+                    }, 3250);
                 }, 7500);
             }
             function theEnd4(){
@@ -167,6 +204,16 @@ function Antrian() {
                     setTimeout(() => {
                         bellSecond[0].click();
                     }, 2250);
+                    setTimeout(() => {
+                        console.log("The end1_1");
+                        if (array_perawat.indexOf(id) !== -1) {
+                            array_perawat.splice(array_perawat.indexOf(id), 1);
+                            // console.log(array_perawat, "OMG")
+                        }
+                        // setIsPlaying(false);
+                        // isPlaying = false;
+                        isPlaying.current = 0;
+                    }, 3250);
                 }, 8500);
             }
             function theEnd5(){
@@ -176,6 +223,16 @@ function Antrian() {
                     setTimeout(() => {
                         bellSecond[0].click();
                     }, 2250);
+                    setTimeout(() => {
+                        console.log("The end1_1");
+                        if (array_perawat.indexOf(id) !== -1) {
+                            array_perawat.splice(array_perawat.indexOf(id), 1);
+                            // console.log(array_perawat, "OMG")
+                        }
+                        // setIsPlaying(false);
+                        // isPlaying = false;
+                        isPlaying.current = 0;
+                    }, 3250);
                 }, 7500);
             }
 
@@ -490,9 +547,9 @@ function Antrian() {
         var puluh = document.getElementsByName("puluh");
         var ratus = document.getElementsByName("ratus");
         var ribu = document.getElementsByName("ribu");
-        var sebelas = document.getElementsByName("sebelas");
+        var sebelas = document.getElementsByName("11");
         var sepuluh = document.getElementsByName("10");
-        var seratus = document.getElementsByName("seratus");
+        var seratus = document.getElementsByName("100");
         var belas = document.getElementsByName("belas");
         var bellFirst = document.getElementsByName("bellFirst");
         var bellSecond = document.getElementsByName("bellSecond");
@@ -500,6 +557,11 @@ function Antrian() {
         // satu[0].click();
             function beginning(){
                 // silahkan[0].play();
+                // setIsPlaying(true);
+                isPlaying.current = 1;
+                for(var i = 0; document.getElementsByClassName('buttonhidden').length > i; i++){
+                    document.getElementsByClassName('buttonhidden')[i].disabled = false;
+                }
                 bellFirst[0].click();
                 setTimeout(() => {
                     nomorUrut[0].click();
@@ -513,6 +575,16 @@ function Antrian() {
                     setTimeout(() => {
                         bellSecond[0].click();
                     }, 2250);
+                    setTimeout(() => {
+                        console.log("The end1_1");
+                        if (array_kasir.indexOf(id) !== -1) {
+                            array_kasir.splice(array_kasir.indexOf(id), 1);
+                            // console.log(array_perawat, "OMG")
+                        }
+                        // setIsPlaying(false);
+                        // isPlaying = false;
+                        isPlaying.current = 0;
+                    }, 3250);
                 }, 5500);
             }
             function theEnd2(){
@@ -523,6 +595,16 @@ function Antrian() {
                     setTimeout(() => {
                         bellSecond[0].click();
                     }, 2250);
+                    setTimeout(() => {
+                        console.log("The end1_1");
+                        if (array_kasir.indexOf(id) !== -1) {
+                            array_kasir.splice(array_kasir.indexOf(id), 1);
+                            // console.log(array_perawat, "OMG")
+                        }
+                        // setIsPlaying(false);
+                        // isPlaying = false;
+                        isPlaying.current = 0;
+                    }, 3250);
                 }, 6500);
             }
             function theEnd3(){
@@ -532,6 +614,16 @@ function Antrian() {
                     setTimeout(() => {
                         bellSecond[0].click();
                     }, 2250);
+                    setTimeout(() => {
+                        console.log("The end1_1");
+                        if (array_kasir.indexOf(id) !== -1) {
+                            array_kasir.splice(array_kasir.indexOf(id), 1);
+                            // console.log(array_perawat, "OMG")
+                        }
+                        // setIsPlaying(false);
+                        // isPlaying = false;
+                        isPlaying.current = 0;
+                    }, 3250);
                 }, 7500);
             }
             function theEnd4(){
@@ -541,6 +633,16 @@ function Antrian() {
                     setTimeout(() => {
                         bellSecond[0].click();
                     }, 2250);
+                    setTimeout(() => {
+                        console.log("The end1_1");
+                        if (array_kasir.indexOf(id) !== -1) {
+                            array_kasir.splice(array_kasir.indexOf(id), 1);
+                            // console.log(array_perawat, "OMG")
+                        }
+                        // setIsPlaying(false);
+                        // isPlaying = false;
+                        isPlaying.current = 0;
+                    }, 3250);
                 }, 8500);
             }
             function theEnd5(){
@@ -550,6 +652,16 @@ function Antrian() {
                     setTimeout(() => {
                         bellSecond[0].click();
                     }, 2250);
+                    setTimeout(() => {
+                        console.log("The end1_1");
+                        if (array_kasir.indexOf(id) !== -1) {
+                            array_kasir.splice(array_kasir.indexOf(id), 1);
+                            // console.log(array_perawat, "OMG")
+                        }
+                        // setIsPlaying(false);
+                        // isPlaying = false;
+                        isPlaying.current = 0;
+                    }, 3250);
                 }, 7500);
             }
     
@@ -850,26 +962,105 @@ function Antrian() {
                 }
     }
 
+    var array_perawat = [];
+    var array_kasir = [];
+
+    function play(num, fromWhat) {
+        console.log(isPlaying)
+        if(isPlaying.current == 0){
+            console.log('masuk ya mas')
+            clearInterval(interval);
+            // setIsPlaying(true);
+            isPlaying.current = 1;
+            var lenSound = document.getElementsByClassName('buttonhidden').length;
+            for(var i = 0; i < lenSound; i++){
+                document.getElementsByClassName('buttonhidden')[i].disabled = true;
+            }
+            if(fromWhat == 'perawat'){
+                soundAntrian(num);
+            }else if(fromWhat == 'kasir'){
+                soundAntrianKasir(num);
+            }
+        }
+    }
+         
+    var interval;
+
     useEffect(() => {
-        const interval = setInterval(() => {
-            
-            setTime(moment().format('hh:mm:ss'));
+        interval = setInterval(() => {
+            console.log("play", isPlaying)
+                
             console.log(IdChecker, IdAntrian.current)
             if(IdAntrian.current !== IdChecker.current){
                 IdChecker.current = IdAntrian.current;
-                soundAntrian(IdAntrian.current);
+                array_perawat.push(IdAntrian.current);
+                // soundAntrian(IdAntrian.current);
+                // array_function.push(function(){soundAntrian(IdAntrian.current)});
+            }
+            
+            if(array_perawat.length > 0){
+                console.log(array_perawat, "here")
+                for(var i = 0; i < array_perawat.length; i++){
+                    // setIsPlaying(true)
+                    // isPlaying.current = 1;
+                    play(array_perawat[i], 'perawat');
+                }
             }
 
             if(IdAntrianKasir.current !== IdCheckerKasir.current){
                 IdCheckerKasir.current = IdAntrianKasir.current;
-                soundAntrianKasir(IdAntrianKasir.current);
+                array_kasir.push(IdAntrianKasir.current);
+                // soundAntrianKasir(IdAntrianKasir.current);
+                // array_function.push(function(){soundAntrianKasir(IdAntrianKasir.current)});
+            }
+            if(array_kasir.length > 0){
+                console.log(array_kasir, "here")
+                for(var i = 0; i < array_kasir.length; i++){
+                    // setIsPlaying(true)
+                    // isPlaying.current = 1;
+                    play(array_kasir[i], 'kasir');
+                    
+                }
             }
         }, 1000);
-        return () => clearInterval(interval);
+            // console.log(array_function[0].call())
+            // if(array_function.length > 0){
+            //     for(var i = 0; i < array_function.length; i++){
+            //         setTimeout(() => {
+            //             // console.log(array_function[i], IdAntrian.current)
+            //             console.log(array_function[i].call())
+            //             console.log(array_function)
+            //         }, 5000);
+            //         setTimeout(() => {
+            //             const index = array_function.indexOf(i);
+            //             if (index > -1) { 
+            //                 array_function.splice(index, 1); 
+            //             }
+            //         }, 10000);
+                    
+            //     }
+                
+            // return () => clearInterval(interval);
+            // }
+    }, []);
+
+    useEffect(() => {
+        // var array_function = []
+        const interval2 = setInterval(() => {
+            
+            setTime(moment().format('hh:mm:ss'));
+            
+        }, 1000);
+        return () => clearInterval(interval2);
     }, []);
     
     useEffect(() => {
         setLoading(true);
+
+        // var lenSound = 20;
+        // for(var i = 0; i < lenSound; i++){
+        //     document.getElementsByClassName('buttonhidden')[0].disabled = true;
+        // }
 
         async function getDay(){
             var dateGD = new Date();
@@ -1059,10 +1250,10 @@ function Antrian() {
                 <button id="8" name="8" className="buttonhidden" onClick={delapan}>delapan</button>
                 <button id="9" name="9" className="buttonhidden" onClick={sembilan}>sembilan</button>
                 <button id="10" name="10" className="buttonhidden" onClick={sepuluh}>sepuluh</button>
-                <button id="sebelas" name="sebelas" className="buttonhidden" onClick={sebelas}>sebelas</button>
+                <button id="11" name="11" className="buttonhidden" onClick={sebelas}>sebelas</button>
                 <button id="puluh" name="puluh" className="buttonhidden" onClick={puluh}>puluh</button>
                 <button id="belas" name="belas" className="buttonhidden" onClick={belas}>belas</button>
-                <button id="seratus" name="seratus" className="buttonhidden" onClick={seratus}>seratus</button>
+                <button id="100" name="100" className="buttonhidden" onClick={seratus}>seratus</button>
                 <button id="ratus" name="ratus" className="buttonhidden" onClick={ratus}>ratus</button>
                 <button id="bellFirst" name="bellFirst" className="buttonhidden" onClick={bellFirst}>bellFirst</button>
                 <button id="bellSecond" name="bellSecond" className="buttonhidden" onClick={bellSecond}>bellSecond</button>

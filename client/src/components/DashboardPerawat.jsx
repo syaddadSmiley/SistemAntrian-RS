@@ -4,7 +4,7 @@ import io from "socket.io-client";
 import '../style/bootstrap/bootstrap.min.css';
 import ConvertTime from "../hooks/ConvertTime";
 import Antrian from "./Antrian";
-import useStore from "../store/user"; 
+// import useStore from "../store/user"; 
 
 const socket = io.connect("http://localhost:3001/", {
     query: {
@@ -13,7 +13,7 @@ const socket = io.connect("http://localhost:3001/", {
 });
 function DashboardPerawat(){
     
-    const { id, setId, id_da, setId_da, counter, setCounter, waktu, setWaktu, status, setStatus, waktu_panggil, setWaktu_panggil, existence, setExistence } = useStore(); 
+    // const { id, setId, id_da, setId_da, counter, setCounter, waktu, setWaktu, status, setStatus, waktu_panggil, setWaktu_panggil, existence, setExistence } = useStore(); 
     const [loading, setLoading] = useState(true);
     const [dataAntrian, setDataAntrian] = useState({
         id: "",
@@ -126,6 +126,16 @@ function DashboardPerawat(){
     const changeNoExistence = () => {
         socket.emit("order:create");
         socket.emit("changeNoExistence", {table: "data_antrian", message: "dari dashboard", id: dataAntrian.id, counter: data.loket});
+    };
+
+    const execRestart = async () => {
+        await fetch("http://localhost:3001/antrian/execRestart", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            },
+        });
+        socket.emit("askToBroadcast", {toBroadcast: "receiveCurrAntrian", data: [], message:"dari prwt NextAntrian"});
     };
 
     useEffect(() => {
@@ -277,6 +287,11 @@ function DashboardPerawat(){
                                         Dashboard <span className="sr-only">current</span>
                                     </a>
                                 </li>
+                                {/* <li className="nav-item">
+                                    <a className="nav-link active" onClick={execRestart} href="http://localhost:3001/antrian/execRestart" style={{fontSize: '25px'}}>
+                                        Restart Server <span className="sr-only">current</span>
+                                    </a>
+                                </li> */}
                                 {/* <li className="nav-item">
                                     <a className="nav-link" href="#" style={{fontSize: '25px'}}>
                                         Layanan

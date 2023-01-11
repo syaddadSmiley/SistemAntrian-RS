@@ -4,7 +4,7 @@ import io from "socket.io-client";
 import '../style/bootstrap/bootstrap.min.css';
 import ConvertTime from "../hooks/ConvertTime";
 import Antrian from "./Antrian";
-import useStore from "../store/user"; 
+// import useStore from "../store/user"; 
 
 const socket = io.connect("http://localhost:3001/", {
     query: {
@@ -13,7 +13,7 @@ const socket = io.connect("http://localhost:3001/", {
 });
 function DashboardKasir(){
     
-    const { id, setId, id_da, setId_da, counter, setCounter, waktu, setWaktu, status, setStatus, waktu_panggil, setWaktu_panggil, existence, setExistence } = useStore(); 
+    // const { id, setId, id_da, setId_da, counter, setCounter, waktu, setWaktu, status, setStatus, waktu_panggil, setWaktu_panggil, existence, setExistence } = useStore(); 
     const [loading, setLoading] = useState(true);
     const [dataAntrian, setDataAntrian] = useState({
         id: "",

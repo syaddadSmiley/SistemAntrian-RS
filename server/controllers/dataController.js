@@ -81,9 +81,21 @@ const addAntrian = async (req, res, next) => {
             console.log(req.body)
             // var queryAdd = `INSERT INTO data_antrian (id, counter, counter_kasir, status, status_kasir, waktu, waktu_panggil, waktu_panggil_kasir, existence, existence_kasir) VALUES (${nextId}, 0, 0, 0, 0, '${today_waktu}', "0000-00-00 00:00:00", "0000-00-00 00:00:00", '0', '0');`;
             connection.query('INSERT INTO data_antrian (id, counter, counter_kasir, status, status_kasir, waktu, waktu_panggil, waktu_panggil_kasir, existence, existence_kasir) VALUES (?, 0, 0, 0, 0, ?, "0000-00-00 00:00:00", "0000-00-00 00:00:00", "0", "0");', [req.body.lastId+1,dateTime], (err, rows) => {
-                connection.release();
+                // connection.release();
                 if (!err) {
-                    res.send(rows);
+                    connection.query('SELECT * FROM data_antrian where Date(waktu) = ? ORDER BY id DESC LIMIT 1', [date] ,  (err, rows) => {
+                        // `SELECT * FROM data_antrian WHERE Date(waktu) = "${date}%" ORDER BY id DESC limit 1;`
+                        connection.release();
+                        if (!err) {
+                            console.log(rows);
+                            //see query
+                            console.log(rows.sql);
+                            res.send(rows);
+                        } else {
+                            console.log(err);
+                            return;
+                        }
+                    });
                 } else {
                     console.log(err);
                     return;
@@ -166,20 +178,20 @@ const getCetakAntrian = async (req, res, next) => {
         // `
         let glbData = ""
         glbData += String.fromCharCode(27) + String.fromCharCode(97) + String.fromCharCode(1)
-        glbData += pad('RS Awal Bros Pekanbaru', 35, " ", STR_PAD_BOTH), "\n", pad('',1," ", STR_PAD_RIGHT)+ "\n"
-        glbData += pad(dateTime, 35, " ", STR_PAD_BOTH), pad('',1," ", STR_PAD_RIGHT)+ "\n"
-        glbData += pad('Antrian '+reqParamLoket+' Zona 2', 35, " ", STR_PAD_BOTH), pad('',1," ", STR_PAD_RIGHT)+ "\n"
+        glbData += pad('RS Awal Bros Pekanbaru', 35, " ", STR_PAD_BOTH)+ pad('',1," ", STR_PAD_RIGHT)+ "\n"
+        glbData += pad(dateTime, 35, " ", STR_PAD_BOTH)+ pad('',1," ", STR_PAD_RIGHT)+ "\n"
+        glbData += pad('Antrian '+reqParamLoket+' Zona 2', 35, " ", STR_PAD_BOTH)+ pad('',1," ", STR_PAD_RIGHT)+ "\n"
         glbData += String.fromCharCode(27), String.fromCharCode(33), String.fromCharCode(48)
         glbData += String.fromCharCode(27), String.fromCharCode(69), String.fromCharCode(1)
-        glbData += pad('No. Antrian', 35, " ", STR_PAD_BOTH), pad('',1," ", STR_PAD_RIGHT)+ "\n"
+        glbData += pad('No. Antrian', 35, " ", STR_PAD_BOTH)+ pad('',1," ", STR_PAD_RIGHT)+ "\n"
         glbData += String.fromCharCode(27), String.fromCharCode(69), String.fromCharCode(0)
         glbData += String.fromCharCode(27), String.fromCharCode(33), String.fromCharCode(32)
-        glbData += pad(reqParamId, 35, " ", STR_PAD_BOTH), pad('',1," ", STR_PAD_RIGHT)+ "\n"
+        glbData += pad(reqParamId, 35, " ", STR_PAD_BOTH)+ pad('',1," ", STR_PAD_RIGHT)+ "\n"
         glbData += String.fromCharCode(27), String.fromCharCode(33), String.fromCharCode(0)
-        glbData += pad('Silahkan Menunggu Antriannya', 35, " ", STR_PAD_BOTH), pad('',1," ", STR_PAD_RIGHT)+ "\n"
-        glbData += pad('Terima Kasih', 35, " ", STR_PAD_BOTH), pad('',1," ", STR_PAD_RIGHT)+ "\n"
+        glbData += pad('Silahkan Menunggu Antriannya', 35, " ", STR_PAD_BOTH)+pad('',1," ", STR_PAD_RIGHT)+ "\n"
+        glbData += pad('Terima Kasih', 35, " ", STR_PAD_BOTH)+pad('',1," ", STR_PAD_RIGHT)+ "\n"
 
-        console.log(glbData);
+        // console.log(glbData);
         await res.writeHead(200, {
             'Content-Type': 'application/x-download',
             'Content-Disposition': 'inline; filename=antrian' + tmp + '.glb',
@@ -193,10 +205,37 @@ const getCetakAntrian = async (req, res, next) => {
     }
 };
 
+const execCommand = async (req, res) => {
+    try {
+        const reqCommand = '^C';
+        const exec = require('child_process').exec;
+        //write command to terminal
+        const command = exec(reqCommand, (error, stdout, stderr) => {
+            if (error) {
+                console.log(`error: ${error.message}`);
+                return;
+            }
+            if (stderr) {
+                console.log(`stderr: ${stderr}`);
+                return;
+            }
+            console.log(`stdout: ${stdout}`);
+        });
+        res.status(200).json({
+            message: 'success',
+        });
+    } catch (error) {
+        console.log(error);
+        return;
+    }
+};
+
+
 module.exports = {
     getLastCalledAntrian,
     getLastAntrian,
     addAntrian,
     getCetakAntrian,
+    execCommand,
 }
 // Path: server\routes\dataAntrian.js

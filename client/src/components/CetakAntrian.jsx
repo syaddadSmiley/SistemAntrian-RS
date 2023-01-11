@@ -83,22 +83,18 @@ function CetakAntrian(){
                             lastId: lastId,
                             message: "testestes"
                         })
-                    }).then((response) => {
-                        console.log("MASUK MAS");
-                        let dataNow = data[0].id+1
-                        CetakSwal.fire({
-                            position: "center",
-                            title: "NOMOR ANTRIAN ANDA " + dataNow,
-                            text: "Antrian berhasil dicetak",
-                            icon: "success",
-                            confirmButtonText: "OK",
-                            timer: 1500,
-                        });
+                    }).then((response) => response.json())
+                    let dataNow = response[0].id;
+                    CetakSwal.fire({
+                        position: "center",
+                        title: "NOMOR ANTRIAN ANDA " + dataNow,
+                        text: "Antrian berhasil dicetak",
+                        icon: "success",
+                        timer: 1500,
+                    });
 
-                        //cetak_antrian
-                        window.open("http://localhost:3001/antrian/cetak_antrian/" + dataNow, "_blank");
-                        return response.json();
-                    })
+                    //cetak_antrian
+                    window.open("http://localhost:3001/antrian/cetak_antrian/" + dataNow, "_blank");
                 });
                 
             }catch(err){
