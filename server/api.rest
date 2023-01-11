@@ -1,0 +1,15 @@
+POST http://localhost:3001/antrian/addAntrian
+Content-Type: application/json
+
+{
+    "id": 1,
+    "nama": "Antrian 1",
+    "status": "Belum Dipanggil"
+}
+
+POST http://localhost:3001/perawat/getNextAntrian
+Content-Type: application/json
+
+{
+    "id": 1
+}
