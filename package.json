@@ -1,5 +1,6 @@
 {
   "dependencies": {
     "@rodrigogs/mysql-events": "^0.6.0"
-  }
+  },
+  "proxy": "http://localhost:5000"
 }
