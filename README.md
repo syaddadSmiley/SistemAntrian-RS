@@ -8,6 +8,7 @@
 
 ### Study Case Feature
 - [x] Monitor queued calls in real time from the admin dashboard.
+- [x] Printing Queue File for users.
 - [x] Each queue call is updated automatically on all related pages.
 - [x] Unique voice integration for each queued call.
 - [x] The sound files from each call are combined with the addition of a specific delay for a smooth and clear audio experience.
